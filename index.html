@@ -69,8 +69,19 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 .tips p{font-size:clamp(12px,3.5vw,15px);color:#4a3820;line-height:1.9;}
 
 /* walk connector */
-.walk{display:flex;align-items:center;gap:10px;padding:clamp(10px,3vw,14px) clamp(16px,4.5vw,22px);background:var(--card);font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);color:var(--muted);letter-spacing:.5px;}
-.walk::before{content:'↓';font-size:clamp(14px,4vw,18px);color:var(--teal);flex-shrink:0;}
+.walk{
+  display:flex;align-items:center;gap:14px;
+  padding:clamp(14px,4vw,20px) clamp(16px,4.5vw,22px);
+  background:var(--card2);
+  border-top:2px solid var(--border);
+  border-bottom:2px solid var(--border);
+  font-family:'Space Mono',monospace;
+  font-size:clamp(13px,3.8vw,17px);
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:.5px;
+}
+.walk::before{content:'↓';font-size:clamp(20px,5.5vw,26px);color:var(--teal);flex-shrink:0;font-weight:700;}
 
 /* ── NIGHT SECTION ── */
 .night-hdr{background:linear-gradient(135deg,#28101a,#181828);padding:clamp(16px,4.5vw,24px) clamp(16px,4.5vw,22px);border-bottom:1px solid rgba(200,100,110,.3);}
@@ -139,109 +150,100 @@ img[alt]:after{
   @page{size:A4 portrait;margin:0;}
   *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
 
-  /* Cover = 1 A4 page */
   .cover{
     width:210mm; height:297mm;
     page-break-after:always;
     overflow:hidden;
     display:flex; flex-direction:column; justify-content:flex-end;
   }
-
-  /* Each .page block = new A4 page */
   .page{
     width:210mm;
-    page-break-after:always;
-    page-break-inside:avoid;
+    page-break-before:always;
     overflow:hidden;
     border-radius:0 !important;
     box-shadow:none !important;
   }
 
-  /* Section header - compact */
-  .section-hdr{padding:6px 14px !important;}
-  .section-hdr-tag{font-size:7px !important;}
-  .section-hdr-title{font-size:16px !important;}
+  /* Section header */
+  .section-hdr{padding:8px 16px !important;}
+  .section-hdr-tag{font-size:9px !important;}
+  .section-hdr-title{font-size:20px !important;}
 
-  /* walk connector - compact */
-  .walk{padding:4px 14px !important;font-size:7.5px !important;}
+  /* Walk connector */
+  .walk{padding:8px 16px !important;font-size:11px !important;font-weight:700 !important;border-top:1.5px solid var(--border) !important;border-bottom:1.5px solid var(--border) !important;}
 
-  /* Each stop fits A4 */
-  .stop{
-    page-break-inside:avoid;
-    border-bottom:1px solid var(--card2) !important;
-  }
-
-  /* Hero image - limit height so content fits */
+  /* Hero image */
   .hero-img{
     width:100% !important;
-    height:90mm !important;
+    height:120mm !important;
     aspect-ratio:unset !important;
     object-fit:cover !important;
   }
 
-  /* Gallery images */
-  .gallery{gap:1px !important;}
+  /* Gallery */
+  .gallery{gap:2px !important;}
   .gallery img{
-    height:38mm !important;
+    height:50mm !important;
     aspect-ratio:unset !important;
     object-fit:cover !important;
   }
-  .gallery.three img{height:32mm !important;}
+  .gallery.three img{height:42mm !important;}
 
-  /* Stop content compact */
-  .stop-head{padding:6px 12px 0 !important;}
-  .stop-time{font-size:9px !important;padding:3px 10px !important;}
-  .stop-name{font-size:14px !important;margin-bottom:5px !important;}
-  .badges{gap:3px !important;margin-bottom:6px !important;}
-  .badge{font-size:7px !important;padding:2px 8px !important;}
-  .stop-body{padding:0 12px 8px !important;}
-  .desc{font-size:9px !important;line-height:1.55 !important;margin-bottom:6px !important;}
-  .tips{padding:6px 10px !important;}
-  .tips p{font-size:8px !important;line-height:1.6 !important;}
+  /* Stop content */
+  .stop-head{padding:10px 16px 0 !important;}
+  .stop-time{font-size:12px !important;padding:5px 14px !important;}
+  .stop-name{font-size:20px !important;margin-bottom:8px !important;}
+  .badges{gap:5px !important;margin-bottom:8px !important;}
+  .badge{font-size:9px !important;padding:4px 10px !important;}
+  .stop-body{padding:0 16px 12px !important;}
+  .desc{font-size:12px !important;line-height:1.7 !important;margin-bottom:8px !important;}
+  .tips{padding:8px 12px !important;}
+  .tips p{font-size:11px !important;line-height:1.75 !important;}
 
-  /* Night page compact */
-  .night-hdr{padding:8px 14px !important;}
-  .night-hdr h2{font-size:14px !important;}
-  .night-hdr p{font-size:8px !important;}
-  .night-label{padding:5px 14px !important;font-size:7px !important;}
-  .bar-pair img{height:40mm !important;object-fit:cover !important;}
-  .bar-label h3{font-size:11px !important;}
-  .bar-label span{font-size:7px !important;}
+  /* Night page */
+  .night-hdr{padding:12px 16px !important;}
+  .night-hdr h2{font-size:18px !important;}
+  .night-hdr p{font-size:10px !important;}
+  .night-label{padding:7px 16px !important;font-size:9px !important;}
+  .bar-pair img{height:55mm !important;object-fit:cover !important;}
+  .bar-label h3{font-size:14px !important;}
+  .bar-label span{font-size:9px !important;}
   .luther-wrap img{
     width:100% !important;
-    height:65mm !important;
+    height:90mm !important;
     object-fit:cover !important;
   }
-  .luther-info{padding:8px 12px !important;}
-  .luther-info h3{font-size:13px !important;margin-bottom:5px !important;}
+  .luther-info{padding:12px 16px !important;}
+  .luther-info h3{font-size:18px !important;margin-bottom:8px !important;}
 
   /* Budget page */
-  .budget-hero{height:55mm !important;object-fit:cover !important;}
-  .budget-title{padding:6px 12px 0 !important;}
-  .budget-title h2{font-size:26px !important;}
-  .budget-title p{font-size:8px !important;}
-  .budget-body{padding:8px 12px !important;}
-  .brow{padding:5px 0 !important;}
-  .bcat{font-size:9px !important;}
-  .bamt{font-size:9px !important;}
-  .bbar-w{height:4px !important;}
-  .btotal{margin-top:6px !important;padding-top:6px !important;}
-  .btotal-amt{font-size:18px !important;}
-  .btotal-sub{font-size:9px !important;}
-  .insights{gap:5px !important;margin-top:8px !important;}
-  .icard{padding:8px 8px !important;}
-  .iemoji{font-size:18px !important;margin-bottom:4px !important;}
-  .ititle{font-size:9px !important;}
-  .itext{font-size:8px !important;line-height:1.5 !important;}
-  .footer{padding:8px !important;font-size:6px !important;}
+  .budget-hero{height:75mm !important;object-fit:cover !important;}
+  .budget-title{padding:10px 16px 0 !important;}
+  .budget-title h2{font-size:36px !important;}
+  .budget-title p{font-size:10px !important;}
+  .budget-body{padding:10px 16px !important;}
+  .brow{padding:7px 0 !important;}
+  .bcat{font-size:12px !important;}
+  .bamt{font-size:12px !important;}
+  .bbar-w{height:6px !important;}
+  .btotal{margin-top:10px !important;padding-top:10px !important;}
+  .btotal-amt{font-size:24px !important;}
+  .btotal-sub{font-size:11px !important;}
+  .insights{gap:8px !important;margin-top:12px !important;}
+  .icard{padding:12px 10px !important;}
+  .iemoji{font-size:24px !important;margin-bottom:6px !important;}
+  .ititle{font-size:12px !important;}
+  .itext{font-size:10px !important;line-height:1.6 !important;}
+  .footer{padding:10px !important;font-size:8px !important;}
 
-  /* Cover text sizes */
-  .cover h1{font-size:52px !important;}
-  .cover-sub{font-size:10px !important;margin-bottom:14px !important;}
-  .csv{font-size:16px !important;}
-  .csl{font-size:7px !important;}
-  .cover-stats{padding-top:10px !important;}
-  .cover-inner{padding:0 10mm 12mm !important;}
+  /* Cover */
+  .cover h1{font-size:64px !important;}
+  .cover-sub{font-size:12px !important;margin-bottom:16px !important;}
+  .csv{font-size:20px !important;}
+  .csl{font-size:8px !important;}
+  .cover-stats{padding-top:14px !important;}
+  .cover-inner{padding:0 12mm 14mm !important;}
+  .cover-tag{font-size:9px !important;margin-bottom:12px !important;}
 }
 </style>
 </head>
@@ -271,10 +273,10 @@ img[alt]:after{
     <div class="section-hdr-title">Morning Exploration</div>
   </div>
   <div class="stop">
-    <img class="hero-img" src="images/img_01.jpg" alt="Cup Noodles Museum Yokohama exterior">
+    <img class="hero-img" src="img_01.jpg" alt="Cup Noodles Museum Yokohama exterior">
     <div class="gallery">
-      <img src="images/img_02.jpg" alt="Cup Noodles Museum noodle wall with visitors">
-      <img src="images/img_03.jpg" alt="Cup Noodles Museum noodle wall exhibit">
+      <img src="img_02.jpg" alt="Cup Noodles Museum noodle wall with visitors">
+      <img src="img_03.jpg" alt="Cup Noodles Museum noodle wall exhibit">
     </div>
     <div class="stop-head">
       <div class="stop-time-row">
@@ -301,10 +303,10 @@ img[alt]:after{
 <div class="page">
   <div class="walk">เดิน 5–7 นาที จากพิพิธภัณฑ์ → สถานี Sakuragicho</div>
   <div class="stop">
-    <img class="hero-img" src="images/img_04.jpg" alt="Yokohama Air Cabin night">
+    <img class="hero-img" src="img_04.jpg" alt="Yokohama Air Cabin night">
     <div class="gallery">
-      <img src="images/img_05.jpg" alt="Yokohama Air Cabin day view">
-      <img src="images/img_06.jpg" alt="Yokohama Air Cabin station entrance">
+      <img src="img_05.jpg" alt="Yokohama Air Cabin day view">
+      <img src="img_06.jpg" alt="Yokohama Air Cabin station entrance">
     </div>
     <div class="stop-head">
       <div class="stop-time-row">
@@ -334,10 +336,10 @@ img[alt]:after{
   </div>
   <div class="walk">เดิน ~20 นาที เลียบทะเลไป Chinatown (วิวสวยมาก)</div>
   <div class="stop">
-    <img class="hero-img" src="images/img_07.jpg" alt="Yokohama Chinatown lanterns crowd">
+    <img class="hero-img" src="img_07.jpg" alt="Yokohama Chinatown lanterns crowd">
     <div class="gallery">
-      <img src="images/img_08.jpg" alt="Yokohama Chinatown gate">
-      <img src="images/img_09.jpg" alt="Yokohama Chinatown street evening">
+      <img src="img_08.jpg" alt="Yokohama Chinatown gate">
+      <img src="img_09.jpg" alt="Yokohama Chinatown street evening">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">12:00</span></div>
@@ -360,10 +362,10 @@ img[alt]:after{
 <div class="page">
   <div class="walk">เดิน 10 นาที</div>
   <div class="stop">
-    <img class="hero-img" src="images/img_10.jpg" alt="Yamashita Park NYK Hikawa Maru">
+    <img class="hero-img" src="img_10.jpg" alt="Yamashita Park NYK Hikawa Maru">
     <div class="gallery">
-      <img src="images/img_11.jpg" alt="Yamashita Park fountain garden">
-      <img src="images/img_12.jpg" alt="Yamashita Park Hikawa Maru ship">
+      <img src="img_11.jpg" alt="Yamashita Park fountain garden">
+      <img src="img_12.jpg" alt="Yamashita Park Hikawa Maru ship">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">13:40</span></div>
@@ -391,10 +393,10 @@ img[alt]:after{
   </div>
   <div class="walk">เดิน 10 นาที</div>
   <div class="stop">
-    <img class="hero-img" src="images/img_13.jpg" alt="Red Brick Warehouse with Landmark Tower">
+    <img class="hero-img" src="img_13.jpg" alt="Red Brick Warehouse with Landmark Tower">
     <div class="gallery">
-      <img src="images/img_14.jpg" alt="Red Brick Warehouse daytime">
-      <img src="images/img_15.jpg" alt="Red Brick Warehouse night illumination">
+      <img src="img_14.jpg" alt="Red Brick Warehouse daytime">
+      <img src="img_15.jpg" alt="Red Brick Warehouse night illumination">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">14:50</span></div>
@@ -417,10 +419,10 @@ img[alt]:after{
 <div class="page">
   <div class="walk">เดิน 10 นาที</div>
   <div class="stop">
-    <img class="hero-img" src="images/img_16.jpg" alt="Yokohama Cosmo World Ferris Wheel day">
+    <img class="hero-img" src="img_16.jpg" alt="Yokohama Cosmo World Ferris Wheel day">
     <div class="gallery">
-      <img src="images/img_17.jpg" alt="Cosmo World Ferris Wheel night lights">
-      <img src="images/img_18.jpg" alt="Cosmo World night view with Landmark Tower">
+      <img src="img_17.jpg" alt="Cosmo World Ferris Wheel night lights">
+      <img src="img_18.jpg" alt="Cosmo World night view with Landmark Tower">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">16:10</span></div>
@@ -450,10 +452,10 @@ img[alt]:after{
 
   <!-- Stop 7: Landmark Tower -->
   <div class="stop">
-    <img class="hero-img" src="images/img_19.jpg" alt="Yokohama Landmark Tower exterior">
+    <img class="hero-img" src="img_19.jpg" alt="Yokohama Landmark Tower exterior">
     <div class="gallery">
-      <img src="images/img_20.jpg" alt="Nippon Maru sailing ship near Landmark Tower">
-      <img src="images/img_19.jpg" alt="Landmark Tower and Landmark Plaza">
+      <img src="img_20.jpg" alt="Nippon Maru sailing ship near Landmark Tower">
+      <img src="img_19.jpg" alt="Landmark Tower and Landmark Plaza">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">17:40</span></div>
@@ -505,11 +507,11 @@ img[alt]:after{
   <!-- Stop 8: Bar Luther -->
   <div class="stop" style="background:#120c10;">
     <div class="luther-wrap">
-      <img src="images/img_21.jpg" alt="Bar Luther Dance Groove interior">
+      <img src="img_21.jpg" alt="Bar Luther Dance Groove interior">
     </div>
     <div class="gallery" style="background:#0c0808;">
-      <img src="images/img_22.jpg" alt="Bar Luther bar counter" style="filter:brightness(.8);">
-      <img src="images/img_21.jpg" alt="Bar Luther red atmosphere" style="filter:brightness(.8);">
+      <img src="img_22.jpg" alt="Bar Luther bar counter" style="filter:brightness(.8);">
+      <img src="img_21.jpg" alt="Bar Luther red atmosphere" style="filter:brightness(.8);">
     </div>
     <div class="luther-info">
       <h3>Bar Luther Dance Groove</h3>
@@ -592,4 +594,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
-
