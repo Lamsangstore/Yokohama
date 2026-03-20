@@ -261,6 +261,329 @@ img[alt]:after{
 }
 .map-btn:hover{background:#148070;transform:translateY(-1px);box-shadow:0 4px 16px rgba(26,122,110,.4);}
 @media print{.map-btn{display:none !important;}}
+
+/* ══════════════════════════════
+   🎉 ANIMATIONS — จัดเต็ม
+══════════════════════════════ */
+@media not print {
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(40px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity:0; transform:scale(.88); }
+  to   { opacity:1; transform:scale(1); }
+}
+@keyframes slideRight {
+  from { opacity:0; transform:translateX(-40px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes slideLeft {
+  from { opacity:0; transform:translateX(40px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-8px); }
+}
+@keyframes pulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(26,122,110,.4); }
+  50%      { box-shadow:0 0 0 10px rgba(26,122,110,0); }
+}
+@keyframes shimmer {
+  0%   { background-position:-200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes bounce {
+  0%,100% { transform:translateY(0) scale(1); }
+  40%      { transform:translateY(-12px) scale(1.05); }
+  60%      { transform:translateY(-6px) scale(1.02); }
+}
+@keyframes rotateIn {
+  from { opacity:0; transform:rotate(-8deg) scale(.9); }
+  to   { opacity:1; transform:rotate(0deg) scale(1); }
+}
+@keyframes drawLine {
+  from { width:0; }
+  to   { width:40px; }
+}
+@keyframes countUp {
+  from { opacity:0; transform:scale(.5); }
+  to   { opacity:1; transform:scale(1); }
+}
+@keyframes walkPulse {
+  0%,100% { transform:translateX(0); opacity:1; }
+  50%      { transform:translateX(6px); opacity:.7; }
+}
+@keyframes imageReveal {
+  from { clip-path:inset(0 100% 0 0); }
+  to   { clip-path:inset(0 0% 0 0); }
+}
+@keyframes badgePop {
+  0%   { transform:scale(0) rotate(-10deg); opacity:0; }
+  70%  { transform:scale(1.15) rotate(2deg); }
+  100% { transform:scale(1) rotate(0deg); opacity:1; }
+}
+@keyframes tipSlide {
+  from { opacity:0; transform:translateX(-16px); border-left-width:0; }
+  to   { opacity:1; transform:translateX(0); border-left-width:3px; }
+}
+@keyframes starSpin {
+  from { transform:rotate(0deg) scale(0); opacity:0; }
+  to   { transform:rotate(360deg) scale(1); opacity:1; }
+}
+@keyframes fabWiggle {
+  0%,100% { transform:rotate(0deg); }
+  20%      { transform:rotate(-6deg) scale(1.05); }
+  40%      { transform:rotate(6deg) scale(1.05); }
+  60%      { transform:rotate(-3deg); }
+  80%      { transform:rotate(3deg); }
+}
+@keyframes nightGlow {
+  0%,100% { box-shadow:0 0 20px rgba(200,80,100,.2); }
+  50%      { box-shadow:0 0 40px rgba(200,80,100,.5); }
+}
+@keyframes barFill {
+  from { width:0 !important; }
+}
+@keyframes coverTitle {
+  0%   { opacity:0; letter-spacing:12px; }
+  100% { opacity:1; letter-spacing:-2px; }
+}
+@keyframes emojiDance {
+  0%,100% { transform:scale(1) rotate(0deg); }
+  25%      { transform:scale(1.2) rotate(-8deg); }
+  75%      { transform:scale(1.2) rotate(8deg); }
+}
+@keyframes particleFly {
+  0%   { transform:translateY(0) scale(1); opacity:1; }
+  100% { transform:translateY(-80px) scale(0); opacity:0; }
+}
+
+/* ── Scroll reveal base ── */
+.reveal {
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),
+             transform .6s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ── Cover animations ── */
+.cover h1 {
+  animation: coverTitle .9s cubic-bezier(.22,1,.36,1) .3s both;
+}
+.cover-tag {
+  animation: fadeDown .7s ease .1s both;
+}
+.cover-tag::before {
+  animation: drawLine .8s ease .6s both;
+  width:0;
+}
+.cover-sub {
+  animation: fadeUp .7s ease .5s both;
+}
+.cover-stats {
+  animation: fadeUp .7s ease .7s both;
+}
+.csv {
+  animation: countUp .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+.cs:nth-child(1) .csv { animation-delay:.8s; }
+.cs:nth-child(2) .csv { animation-delay:.95s; }
+.cs:nth-child(3) .csv { animation-delay:1.1s; }
+.cs:nth-child(4) .csv { animation-delay:1.25s; }
+
+/* ── FAB button ── */
+.fab {
+  animation: fadeUp .6s ease 1s both;
+}
+.fab:hover {
+  animation: fabWiggle .5s ease;
+}
+
+/* ── Section header ── */
+.section-hdr {
+  animation: slideRight .6s ease both;
+}
+.section-hdr-title {
+  animation: fadeUp .5s ease .1s both;
+}
+
+/* ── Hero image ── */
+.hero-img {
+  animation: scaleIn .7s cubic-bezier(.22,1,.36,1) both;
+  transform-origin: center;
+}
+
+/* ── Gallery images ── */
+.gallery img:nth-child(1) {
+  animation: slideRight .6s ease both;
+}
+.gallery img:nth-child(2) {
+  animation: slideLeft .6s ease .1s both;
+}
+.gallery img:nth-child(3) {
+  animation: slideLeft .6s ease .2s both;
+}
+
+/* ── Stop name ── */
+.stop-name {
+  animation: rotateIn .6s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* ── Stop time badge ── */
+.stop-time {
+  animation: badgePop .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+/* ── Badges ── */
+.badge {
+  animation: badgePop .4s cubic-bezier(.34,1.56,.64,1) both;
+  display:inline-flex;
+}
+.badge:nth-child(1) { animation-delay:.05s; }
+.badge:nth-child(2) { animation-delay:.12s; }
+.badge:nth-child(3) { animation-delay:.19s; }
+
+/* ── Description ── */
+.desc {
+  animation: fadeUp .5s ease .1s both;
+}
+
+/* ── Tips ── */
+.tips {
+  animation: tipSlide .5s ease .2s both;
+}
+.tips p:nth-child(1) { animation: fadeUp .4s ease .2s both; }
+.tips p:nth-child(2) { animation: fadeUp .4s ease .32s both; }
+.tips p:nth-child(3) { animation: fadeUp .4s ease .44s both; }
+
+/* ── Map button ── */
+.map-btn {
+  animation: badgePop .6s cubic-bezier(.34,1.56,.64,1) .3s both;
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-delay: 1.5s;
+  animation-iteration-count: infinite;
+}
+.map-btn:hover {
+  animation: none !important;
+}
+
+/* ── Walk connector arrow ── */
+.walk::before {
+  display:inline-block;
+  animation: walkPulse 1.2s ease-in-out infinite;
+}
+.walk {
+  animation: fadeUp .4s ease both;
+}
+
+/* ── Insight cards ── */
+.icard {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.icard:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(0,0,0,.15);
+}
+.iemoji {
+  display:block;
+  animation: emojiDance 3s ease-in-out infinite;
+}
+.icard:nth-child(1) .iemoji { animation-delay:0s; }
+.icard:nth-child(2) .iemoji { animation-delay:.4s; }
+.icard:nth-child(3) .iemoji { animation-delay:.8s; }
+
+/* ── Budget bars ── */
+.bbar {
+  animation: barFill 1.2s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* ── Stop card hover ── */
+.stop {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.stop:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.12);
+}
+
+/* ── Night banner glow ── */
+.night-hdr {
+  animation: nightGlow 2.5s ease-in-out infinite;
+}
+
+/* ── Bar cards hover ── */
+.bar-card {
+  transition: transform .2s ease;
+  overflow: hidden;
+}
+.bar-card:hover {
+  transform: scale(1.02);
+}
+.bar-card img {
+  transition: transform .4s ease;
+}
+.bar-card:hover img {
+  transform: scale(1.06);
+}
+
+/* ── Particles on cover (CSS only) ── */
+.cover::before {
+  content: '🌸✨🌟💫⭐🎌';
+  position: absolute;
+  font-size: 20px;
+  top: 15%;
+  left: 8%;
+  animation: float 4s ease-in-out infinite;
+  z-index: 2;
+  letter-spacing: 8px;
+  opacity: .6;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Image hover zoom ── */
+.hero-img {
+  transition: transform .4s ease;
+}
+.stop:hover .hero-img {
+  transform: scale(1.02);
+}
+
+/* ── Section hdr shimmer ── */
+.section-hdr-title {
+  background: linear-gradient(
+    90deg,
+    var(--ink) 0%,
+    var(--gold) 40%,
+    var(--ink) 60%,
+    var(--ink) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+} /* end @media not print */
 </style>
 </head>
 <body>
@@ -630,6 +953,298 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
+});
+</script>
+<script>
+/* ══════════════════════════════════════════
+   🎌 TOUCH-FIRST ANIMATIONS
+══════════════════════════════════════════ */
+
+// ── 1. Scroll Reveal (fade up เมื่อ scroll ถึง) ──────────
+const revealTargets = document.querySelectorAll(
+  '.stop, .walk, .section-hdr, .night-hdr, .night-label, .bar-pair, .luther-wrap, .luther-info, .budget-title, .budget-body, .icard, .brow'
+);
+revealTargets.forEach(el => {
+  el.style.cssText += 'opacity:0;transform:translateY(36px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1);';
+});
+new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }, i * 55);
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.08, rootMargin:'0px 0px -40px 0px' }).observe;
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }, i * 55);
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.08, rootMargin:'0px 0px -40px 0px' });
+revealTargets.forEach(el => io.observe(el));
+
+// ── 2. Budget bars animate เมื่อ scroll ถึง ───────────────
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const target = e.target.dataset.w;
+    e.target.style.transition = 'width 1.2s cubic-bezier(.22,1,.36,1)';
+    e.target.style.width = target;
+    barObs.unobserve(e.target);
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.bbar').forEach(b => {
+  b.dataset.w = b.style.width || getComputedStyle(b).width;
+  b.style.width = '0';
+  barObs.observe(b);
+});
+
+// ── 3. TOUCH RIPPLE — กดที่ stop card ─────────────────────
+function createRipple(el, x, y) {
+  const r = document.createElement('span');
+  const rect = el.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height) * 2;
+  r.style.cssText = `
+    position:absolute;
+    width:${size}px; height:${size}px;
+    left:${x - rect.left - size/2}px;
+    top:${y - rect.top - size/2}px;
+    background:rgba(138,101,32,.18);
+    border-radius:50%;
+    transform:scale(0);
+    animation:ripple .6s ease-out forwards;
+    pointer-events:none; z-index:10;
+  `;
+  el.style.position = 'relative';
+  el.style.overflow = 'hidden';
+  el.appendChild(r);
+  setTimeout(() => r.remove(), 700);
+}
+
+// inject ripple keyframe
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+  @keyframes ripple {
+    to { transform:scale(1); opacity:0; }
+  }
+  @keyframes touchPop {
+    0%   { transform:scale(1); }
+    40%  { transform:scale(.96); }
+    100% { transform:scale(1); }
+  }
+  @keyframes imgReveal {
+    from { clip-path:inset(0 100% 0 0 round 8px); }
+    to   { clip-path:inset(0 0% 0 0 round 8px); }
+  }
+  @keyframes stampIn {
+    0%   { transform:scale(1.4) rotate(-6deg); opacity:0; }
+    60%  { transform:scale(.95) rotate(1deg); opacity:1; }
+    100% { transform:scale(1) rotate(0deg); opacity:1; }
+  }
+  @keyframes walkBounce {
+    0%,100% { transform:translateX(0); }
+    30%     { transform:translateX(8px); }
+    60%     { transform:translateX(4px); }
+  }
+  @keyframes glowPulse {
+    0%,100% { box-shadow:0 0 0 0 rgba(26,122,110,.5); }
+    50%      { box-shadow:0 0 0 12px rgba(26,122,110,0); }
+  }
+  @keyframes confettiFall {
+    0%   { transform:translateY(-20px) rotate(0deg) scale(1); opacity:1; }
+    100% { transform:translateY(100vh) rotate(720deg) scale(.3); opacity:0; }
+  }
+  @keyframes swipeHint {
+    0%   { transform:translateX(0) scale(1); opacity:.7; }
+    50%  { transform:translateX(-18px) scale(.95); opacity:1; }
+    100% { transform:translateX(0) scale(1); opacity:.7; }
+  }
+`;
+document.head.appendChild(rippleStyle);
+
+// Touch events on stop cards
+document.querySelectorAll('.stop, .icard, .walk, .section-hdr').forEach(el => {
+  el.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    createRipple(el, t.clientX, t.clientY);
+    el.style.animation = 'touchPop .3s ease forwards';
+    setTimeout(() => el.style.animation = '', 300);
+  }, { passive: true });
+});
+
+// ── 4. HERO IMAGE — swipe gallery ────────────────────────
+document.querySelectorAll('.stop').forEach(stop => {
+  const hero = stop.querySelector('.hero-img');
+  const galleryImgs = [...stop.querySelectorAll('.gallery img')];
+  if (!hero || !galleryImgs.length) return;
+
+  const allImgs = [hero.src, ...galleryImgs.map(i => i.src)];
+  let cur = 0;
+  let startX = 0;
+
+  // add dots indicator
+  const dots = document.createElement('div');
+  dots.style.cssText = `
+    display:flex; justify-content:center; gap:6px;
+    padding:6px; background:var(--card2);
+  `;
+  allImgs.forEach((_, i) => {
+    const d = document.createElement('span');
+    d.style.cssText = `
+      width:${i===0?'20px':'8px'}; height:8px; border-radius:4px;
+      background:${i===0?'var(--gold)':'rgba(138,101,32,.3)'};
+      transition:all .3s ease; display:inline-block;
+    `;
+    dots.appendChild(d);
+  });
+  hero.parentNode.insertBefore(dots, hero.nextSibling);
+
+  function goTo(idx) {
+    cur = (idx + allImgs.length) % allImgs.length;
+    hero.style.transition = 'opacity .3s ease, transform .3s ease';
+    hero.style.opacity = '0';
+    hero.style.transform = 'scale(.97)';
+    setTimeout(() => {
+      hero.src = allImgs[cur];
+      hero.style.opacity = '1';
+      hero.style.transform = 'scale(1)';
+    }, 180);
+    // update dots
+    dots.querySelectorAll('span').forEach((d, i) => {
+      d.style.width = i === cur ? '20px' : '8px';
+      d.style.background = i === cur ? 'var(--gold)' : 'rgba(138,101,32,.3)';
+    });
+  }
+
+  hero.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
+  hero.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) goTo(dx < 0 ? cur+1 : cur-1);
+  }, { passive:true });
+
+  // swipe hint animation on first stop
+  if (stop === document.querySelector('.stop')) {
+    const hint = document.createElement('div');
+    hint.textContent = '← swipe รูป →';
+    hint.style.cssText = `
+      position:absolute; bottom:12px; right:12px; z-index:5;
+      font-family:'Space Mono',monospace; font-size:9px;
+      color:#fff; background:rgba(0,0,0,.45);
+      padding:4px 10px; border-radius:20px;
+      animation: swipeHint 1.5s ease-in-out 1.5s 3;
+    `;
+    hero.style.position = 'relative';
+    const wrap = document.createElement('div');
+    wrap.style.position = 'relative';
+    hero.parentNode.insertBefore(wrap, hero);
+    wrap.appendChild(hero);
+    wrap.appendChild(hint);
+    setTimeout(() => hint.style.opacity = '0', 6000);
+  }
+});
+
+// ── 5. MAP BUTTON — glowing pulse ────────────────────────
+document.querySelectorAll('.map-btn').forEach(btn => {
+  btn.style.animation = 'glowPulse 2s ease-in-out infinite';
+  btn.addEventListener('touchstart', () => {
+    btn.style.transform = 'scale(.95)';
+    btn.style.animation = 'none';
+    spawnConfetti(btn);
+  }, { passive:true });
+  btn.addEventListener('touchend', () => {
+    btn.style.transform = '';
+    btn.style.animation = 'glowPulse 2s ease-in-out infinite';
+  }, { passive:true });
+});
+
+// ── 6. WALK CONNECTOR — bounce arrow ────────────────────
+document.querySelectorAll('.walk').forEach(w => {
+  setInterval(() => {
+    w.style.animation = 'walkBounce .5s ease';
+    setTimeout(() => w.style.animation = '', 500);
+  }, 2500);
+});
+
+// ── 7. CONFETTI BURST ────────────────────────────────────
+function spawnConfetti(fromEl) {
+  const emojis = ['🎌','✨','🌸','⭐','🎉','💫','🗾','🍜','🚡'];
+  const rect = fromEl ? fromEl.getBoundingClientRect() : { left: window.innerWidth/2, top: window.innerHeight*.7 };
+  for (let i = 0; i < 22; i++) {
+    const el = document.createElement('div');
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    const angle = (Math.random() * 360);
+    const dist  = 80 + Math.random() * 120;
+    el.style.cssText = `
+      position:fixed; z-index:9999; pointer-events:none;
+      font-size:${18 + Math.random()*16}px;
+      left:${rect.left + (fromEl ? fromEl.offsetWidth/2 : 0)}px;
+      top:${rect.top}px;
+      animation:confettiFall ${1+Math.random()*.8}s ease-out ${Math.random()*.3}s forwards;
+      --dx:${Math.cos(angle*Math.PI/180)*dist}px;
+      --dy:${Math.sin(angle*Math.PI/180)*dist - 120}px;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
+}
+
+// FAB confetti
+document.querySelector('.fab')?.addEventListener('touchstart', () => {
+  spawnConfetti(document.querySelector('.fab'));
+}, { passive:true });
+
+// ── 8. BADGE — stamp animation on scroll ────────────────
+const badgeObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.badge').forEach((b, i) => {
+      b.style.animation = `stampIn .45s cubic-bezier(.34,1.56,.64,1) ${i*.08}s both`;
+    });
+    e.target.querySelectorAll('.stop-name').forEach(n => {
+      n.style.animation = 'stampIn .5s cubic-bezier(.34,1.56,.64,1) both';
+    });
+    badgeObs.unobserve(e.target);
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.stop-head').forEach(h => badgeObs.observe(h));
+
+// ── 9. NIGHT CARDS — touch glow ─────────────────────────
+document.querySelectorAll('.bar-card').forEach(card => {
+  card.addEventListener('touchstart', () => {
+    card.style.filter = 'brightness(1.2)';
+    card.style.transition = 'filter .2s';
+    createRipple(card, card.getBoundingClientRect().left + card.offsetWidth/2,
+                       card.getBoundingClientRect().top  + card.offsetHeight/2);
+  }, { passive:true });
+  card.addEventListener('touchend', () => {
+    setTimeout(() => card.style.filter = '', 300);
+  }, { passive:true });
+});
+
+// ── 10. Cover parallax on touch scroll ──────────────────
+const coverBg = document.querySelector('.cover-bg');
+window.addEventListener('scroll', () => {
+  if (!coverBg) return;
+  coverBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+}, { passive:true });
+
+// ── 11. INSIGHT CARDS — touch scale ─────────────────────
+document.querySelectorAll('.icard').forEach(card => {
+  card.addEventListener('touchstart', () => {
+    card.style.transform = 'scale(.93)';
+    card.style.transition = 'transform .15s ease';
+  }, { passive:true });
+  card.addEventListener('touchend', () => {
+    card.style.transform = 'scale(1.04)';
+    setTimeout(() => card.style.transform = '', 300);
+  }, { passive:true });
 });
 </script>
 </body>
