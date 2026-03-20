@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Yokohama Master Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Noto+Sans+Thai:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#8a6520; --gold-l:#a07828; --teal:#1a7a6e;
+  --red:#c0304a; --navy:#f5f0e8; --card:#ede8dc;
+  --card2:#e8e2d4; --white:#1a1410; --muted:#6b5e4e; --border:rgba(138,101,32,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#e8e2d4;font-family:'Noto Sans Thai',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+.fab{position:fixed;bottom:20px;right:20px;z-index:999;background:#1a1410;color:#f5f0e8;border:none;padding:14px 28px;border-radius:40px;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;box-shadow:0 6px 28px rgba(0,0,0,.3);transition:all .2s;}
+.fab:hover{background:#2a2018;transform:translateY(-2px);}
+
+/* ── PAGE: mobile = full width, print = A4 ── */
+.page{
+  width:100%;
+  background:var(--navy);
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ── COVER ── */
+.cover{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.cover .bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,240,232,.05) 0%,rgba(245,240,232,.3) 45%,rgba(245,240,232,.97) 100%),url('https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1600&q=90') center/cover;}
+.cover-inner{position:relative;z-index:1;padding:0 6vw 8vw;}
+.cover-tag{font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,13px);letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.cover-tag::before{content:'';width:36px;height:1px;background:var(--gold);}
+.cover h1{font-family:'Playfair Display',serif;font-size:clamp(56px,18vw,100px);font-weight:900;line-height:.88;letter-spacing:-2px;color:#1a1410;margin-bottom:12px;}
+.cover h1 em{color:var(--gold);font-style:italic;}
+.cover-sub{font-size:clamp(13px,3.5vw,16px);color:var(--muted);font-weight:300;margin-bottom:28px;line-height:1.6;}
+.cover-stats{display:flex;border-top:1px solid rgba(138,101,32,.3);padding-top:20px;flex-wrap:wrap;gap:8px 0;}
+.cs{flex:1;min-width:45%;padding-right:16px;}
+.cs:not(:last-child){border-right:1px solid rgba(26,20,16,.1);margin-right:16px;}
+.csv{font-family:'Playfair Display',serif;font-size:clamp(18px,5vw,26px);font-weight:700;color:var(--gold);display:block;line-height:1.1;}
+.csl{font-size:clamp(8px,2vw,10px);color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+
+/* ── FULL PHOTO STOP ── */
+.stop-page{display:flex;flex-direction:column;}
+.stop-photo{position:relative;overflow:hidden;height:55vw;min-height:220px;max-height:340px;}
+.stop-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.stop-time{position:absolute;top:16px;left:16px;z-index:2;background:rgba(245,240,232,.9);backdrop-filter:blur(8px);border:1px solid rgba(138,101,32,.3);border-radius:30px;padding:7px 18px;font-family:'Space Mono',monospace;font-size:clamp(12px,3.5vw,15px);font-weight:700;color:var(--gold);}
+.stop-title{position:absolute;bottom:16px;left:16px;z-index:2;font-family:'Playfair Display',serif;font-size:clamp(22px,6.5vw,34px);font-weight:700;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.75),0 0 40px rgba(0,0,0,.5);line-height:1.15;}
+.stop-info{padding:18px 20px 24px;display:flex;flex-direction:column;gap:12px;}
+
+/* badges */
+.badges{display:flex;flex-wrap:wrap;gap:6px;}
+.badge{font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);padding:5px 12px;border-radius:20px;letter-spacing:.3px;line-height:1.4;}
+.bt{background:rgba(26,122,110,.1);color:var(--teal);border:1px solid rgba(26,122,110,.3);}
+.bc{background:rgba(138,101,32,.12);color:var(--gold);border:1px solid rgba(138,101,32,.3);}
+.bw{background:rgba(26,20,16,.06);color:var(--muted);border:1px solid rgba(26,20,16,.15);}
+
+/* desc + tips */
+.desc{font-size:clamp(13px,3.8vw,16px);color:#3a2e1e;line-height:1.85;}
+.tips{background:rgba(138,101,32,.07);border-left:3px solid var(--gold);padding:12px 16px;border-radius:0 8px 8px 0;}
+.tips p{font-size:clamp(12px,3.5vw,15px);color:#4a3820;line-height:1.9;}
+
+/* section divider */
+.sec-div{
+  background:var(--card);
+  padding:10px 20px;
+  font-family:'Space Mono',monospace;
+  font-size:clamp(9px,2.5vw,11px);
+  letter-spacing:3px;
+  color:var(--gold);
+  text-transform:uppercase;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+/* ── HALF STOP (2 per page) ── */
+.two-page{display:flex;flex-direction:column;}
+.half{display:flex;flex-direction:column;border-bottom:4px solid var(--card);}
+.half:last-child{border-bottom:none;}
+.half-photo{position:relative;overflow:hidden;height:48vw;min-height:200px;max-height:280px;}
+.half-photo img{width:100%;height:100%;object-fit:cover;}
+.half-time{position:absolute;top:14px;left:14px;z-index:2;background:rgba(245,240,232,.9);border:1px solid rgba(138,101,32,.3);border-radius:30px;padding:6px 14px;font-family:'Space Mono',monospace;font-size:clamp(11px,3vw,13px);font-weight:700;color:var(--gold);}
+.half-title{position:absolute;bottom:12px;left:14px;z-index:2;font-family:'Playfair Display',serif;font-size:clamp(18px,5.5vw,26px);font-weight:700;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.8),0 0 30px rgba(0,0,0,.5);}
+.half-body{padding:14px 18px 18px;display:flex;flex-direction:column;gap:10px;}
+.half-body .desc{font-size:clamp(12px,3.5vw,14px);}
+.half-body .tips p{font-size:clamp(11px,3.2vw,13px);}
+
+/* ── NIGHT ── */
+.night-hdr{background:linear-gradient(135deg,#2a1018,#1a1a28);border-bottom:1px solid rgba(192,48,74,.3);padding:18px 20px;}
+.night-hdr h2{font-family:'Playfair Display',serif;font-size:clamp(20px,6vw,26px);color:#e8a0a8;margin-bottom:4px;}
+.night-hdr p{font-size:clamp(12px,3.5vw,14px);color:#c0a8a0;line-height:1.7;}
+.night-hdr strong{color:#f0b0b8;}
+.bar-row{display:flex;}
+.bar-half{flex:1;position:relative;border-right:4px solid var(--card);}
+.bar-half:last-child{border-right:none;}
+.bar-half img{width:100%;height:clamp(130px,36vw,200px);object-fit:cover;display:block;}
+.bar-name{position:absolute;bottom:12px;left:14px;z-index:1;font-family:'Playfair Display',serif;font-size:clamp(15px,4.5vw,20px);color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.9),0 0 24px rgba(0,0,0,.7);}
+.bar-tag{position:absolute;top:12px;left:12px;z-index:1;font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);background:rgba(245,240,232,.9);border:1px solid rgba(138,101,32,.3);color:var(--gold);padding:4px 10px;border-radius:20px;}
+.night-label{padding:12px 20px;font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);color:#c05060;letter-spacing:2px;border-top:1px solid rgba(192,80,96,.2);background:var(--navy);}
+.luther{position:relative;overflow:hidden;height:clamp(240px,60vw,380px);}
+.luther img{width:100%;height:100%;object-fit:cover;}
+.luther-overlay{position:absolute;bottom:0;left:0;right:0;z-index:2;background:linear-gradient(0deg,rgba(20,12,8,.95) 0%,rgba(20,12,8,.7) 50%,transparent 100%);padding:20px;}
+.luther-info{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:18px 20px;}
+.luther-info h3{font-family:'Playfair Display',serif;font-size:clamp(20px,6vw,28px);font-weight:700;color:#f5f0e8;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.8);}
+.luther-info .tips p{font-size:clamp(11px,3vw,14px);}
+
+/* ── BUDGET ── */
+.budget-page{display:flex;flex-direction:column;}
+.budget-photo{position:relative;overflow:hidden;height:clamp(200px,52vw,320px);}
+.budget-photo img{width:100%;height:100%;object-fit:cover;}
+.budget-title-box{position:absolute;bottom:18px;left:18px;z-index:2;background:rgba(245,240,232,.85);padding:14px 18px;border-radius:10px;backdrop-filter:blur(4px);}
+.budget-title-box h2{font-family:'Playfair Display',serif;font-size:clamp(36px,11vw,56px);font-weight:900;color:#1a1410;line-height:1;}
+.budget-title-box h2 em{color:var(--gold);font-style:italic;}
+.budget-title-box p{font-size:clamp(11px,3vw,13px);color:var(--muted);margin-top:5px;}
+.budget-body{padding:18px 20px;display:flex;flex-direction:column;}
+.brow{display:flex;align-items:center;padding:11px 0;border-bottom:1px solid rgba(26,20,16,.1);}
+.brow:last-of-type{border-bottom:none;}
+.bcat{flex-shrink:0;width:38%;font-size:clamp(12px,3.5vw,15px);color:var(--muted);}
+.bbar-w{flex:1;height:6px;background:rgba(26,20,16,.1);border-radius:3px;margin:0 10px;}
+.bbar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--teal));}
+.bamt{font-family:'Space Mono',monospace;font-size:clamp(11px,3vw,14px);color:#1a1410;width:20%;text-align:right;flex-shrink:0;}
+.btotal{margin-top:14px;padding-top:14px;border-top:2px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;}
+.btotal-lbl{font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);color:var(--gold);letter-spacing:2px;}
+.btotal-right{text-align:right;}
+.btotal-amt{font-family:'Playfair Display',serif;font-size:clamp(22px,7vw,32px);font-weight:700;color:var(--gold);display:block;}
+.btotal-sub{font-size:clamp(12px,3.5vw,15px);color:var(--muted);}
+.insights{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;}
+.icard{background:var(--card2);border:1px solid rgba(138,101,32,.2);border-radius:12px;padding:16px 12px;text-align:center;}
+.iemoji{font-size:clamp(22px,6vw,30px);display:block;margin-bottom:8px;}
+.ititle{font-family:'Playfair Display',serif;font-size:clamp(12px,3.5vw,15px);color:var(--gold);margin-bottom:5px;}
+.itext{font-size:clamp(10px,2.8vw,13px);color:var(--muted);line-height:1.7;}
+.footer-txt{padding:20px;text-align:center;font-family:'Space Mono',monospace;font-size:clamp(8px,2vw,10px);color:rgba(26,20,16,.25);letter-spacing:3px;border-top:1px solid rgba(26,20,16,.1);}
+
+/* ── SCREEN: card spacing ── */
+@media screen{
+  body{padding:16px 0;}
+  .page{margin-bottom:16px;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.2);max-width:480px;}
+}
+
+/* ── PRINT ── */
+@media print{
+  .fab{display:none !important;}
+  body{background:#e8e2d4 !important;padding:0;}
+  .page{border-radius:0 !important;box-shadow:none !important;max-width:none !important;page-break-after:always;page-break-inside:avoid;}
+  @page{margin:0;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+}
+</style>
+</head>
+<body>
+<button class="fab" onclick="window.print()">🖨️ บันทึกเป็น PDF</button>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="bg"></div>
+  <div class="cover-inner">
+    <div class="cover-tag">Master Plan &nbsp;·&nbsp; One Day &nbsp;·&nbsp; Full Experience</div>
+    <h1>Yoko<em>hama</em></h1>
+    <p class="cover-sub">แผนการเดินทาง 1 วันเต็ม &nbsp;·&nbsp; ตั้งแต่เช้าจรดดึก &nbsp;·&nbsp; โยโกฮาม่า ประเทศญี่ปุ่น</p>
+    <div class="cover-stats">
+      <div class="cs"><span class="csv">09:30</span><span class="csl">เริ่มต้น</span></div>
+      <div class="cs"><span class="csv">00:30+</span><span class="csl">สิ้นสุด</span></div>
+      <div class="cs"><span class="csv">~2,000฿</span><span class="csl">งบทั้งวัน</span></div>
+      <div class="cs"><span class="csv">8 Stops</span><span class="csl">จุดหมาย</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CUP NOODLES MUSEUM -->
+<div class="page stop-page">
+  <div class="stop-photo">
+    <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=1400&q=90" alt="Cup Noodles Museum">
+    <div class="stop-time">09:30</div>
+    <div class="stop-title">Cup Noodles Museum<br>Yokohama</div>
+  </div>
+  <div class="stop-info">
+    <div class="badges">
+      <span class="badge bt">⏰ 09:30 – 11:00</span>
+      <span class="badge bc">💰 ~1,000 เยน</span>
+      <span class="badge bw">🚶 15 นาที จาก Sakuragicho / 8 นาที จาก Minatomirai</span>
+    </div>
+    <p class="desc">พิพิธภัณฑ์บะหมี่กึ่งสำเร็จรูปของ Momofuku Ando ผู้คิดค้นบะหมี่สำเร็จรูป พร้อมประสบการณ์ทำบะหมี่ในถ้วยด้วยตัวเอง เลือกลาย ส่วนผสม และ toppings ได้เอง เป็นของที่ระลึกที่ดีมาก</p>
+    <div class="tips">
+      <p>✅ เข้าไป → จองทำบะหมี่ทันที (Slot จำกัดมาก)</p>
+      <p>✅ เดินดูนิทรรศการก่อน → กลับมาทำตอนครบเวลา</p>
+      <p>💰 ค่าเข้า ~500 เยน &nbsp;+&nbsp; ทำบะหมี่ ~500 เยน</p>
+    </div>
+  </div>
+</div>
+
+<!-- AIR CABIN + CHINATOWN -->
+<div class="page two-page">
+  <div class="half">
+    <div class="half-photo">
+      <img src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1400&q=90" alt="Air Cabin">
+      <div class="half-time">11:10</div>
+      <div class="half-title">Yokohama Air Cabin</div>
+    </div>
+    <div class="half-body">
+      <div class="badges" style="margin-bottom:6px;">
+        <span class="badge bt">⏰ 11:10 – 11:35</span>
+        <span class="badge bc">💰 ~1,000 เยน</span>
+        <span class="badge bw">🚡 Sakuragicho → Unga Park</span>
+      </div>
+      <p class="desc">กระเช้าไฟฟ้าในเมืองสายแรกของญี่ปุ่น ระยะทาง 630 เมตร วิวท่าเรือ Minatomirai 360 องศา มองเห็น Cosmo World + Landmark Tower พร้อมกัน</p>
+      <div class="tips" style="margin-top:6px;"><p>✅ ใช้เวลาสั้น แต่วิวคุ้มมาก ถ่ายรูปสวยมาก</p></div>
+    </div>
+  </div>
+  <div class="half">
+    <div class="half-photo">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=90" alt="Chinatown">
+      <div class="half-time">12:00</div>
+      <div class="half-title">Yokohama Chinatown</div>
+    </div>
+    <div class="half-body">
+      <div class="badges" style="margin-bottom:6px;">
+        <span class="badge bt">⏰ 12:00 – 13:30</span>
+        <span class="badge bc">💰 ~1,000–2,000 เยน</span>
+      </div>
+      <p class="desc">ไชนาทาวน์ใหญ่ที่สุดในญี่ปุ่น 600+ ร้าน บรรยากาศสีแดงทอง โคมไฟ ประตูโบราณ กลิ่นอาหารหอม เดินกินแบบ street food</p>
+      <div class="tips" style="margin-top:6px;"><p>🍱 ซาลาเปา · เสี่ยวหลงเปา · ของทอด — "3 ร้าน อิ่มพอดี ไม่เลี่ยน"</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- YAMASHITA PARK -->
+<div class="page stop-page">
+  <div class="stop-photo">
+    <img src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=1400&q=90" alt="Yamashita Park">
+    <div class="stop-time">13:40</div>
+    <div class="stop-title">Yamashita Park</div>
+  </div>
+  <div class="stop-info">
+    <div class="badges">
+      <span class="badge bt">⏰ 13:40 – 14:20</span>
+      <span class="badge bc">💰 ฟรี</span>
+      <span class="badge bw">🚶 10 นาที จาก Chinatown</span>
+    </div>
+    <p class="desc">สวนสาธารณะริมทะเลยาวกว่า 700 เมตร สวยที่สุดในโยโกฮาม่า นั่งพักย่อยอาหาร ดูวิวท่าเรือ มองเห็น Landmark Tower ตระหง่านและ NYK Hikawa Maru เรือพิพิธภัณฑ์ยุค 1930</p>
+    <div class="tips">
+      <p>✅ นั่งพัก เดินย่อยอาหารชิลๆ ริมทะเล</p>
+      <p>⚓ ถ่ายรูปกับ NYK Hikawa Maru — landmark ที่ขาดไม่ได้</p>
+      <p>📸 วิวท่าเรือและ Landmark Tower สวยมากตอนบ่าย</p>
+    </div>
+  </div>
+</div>
+
+<!-- RED BRICK + COSMO WORLD -->
+<div class="page two-page">
+  <div class="half">
+    <div class="half-photo">
+      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1400&q=90" alt="Red Brick">
+      <div class="half-time">14:50</div>
+      <div class="half-title">Red Brick Warehouse</div>
+    </div>
+    <div class="half-body">
+      <div class="badges" style="margin-bottom:6px;">
+        <span class="badge bt">⏰ 14:50 – 16:00</span>
+        <span class="badge bc">💰 คาเฟ่ ~600–1,000 เยน</span>
+      </div>
+      <p class="desc">โกดังอิฐแดงประวัติศาสตร์อายุ 100+ ปี เป็น shopping complex ริมทะเล บรรยากาศวินเทจสวยงาม ร้านค้า คาเฟ่ วิวท่าเรือสวยมาก</p>
+      <div class="tips" style="margin-top:6px;">
+        <p>✅ แวะเข้าคาเฟ่ นั่งพักริมน้ำ · ช้อปปิ้งเบาๆ</p>
+      </div>
+    </div>
+  </div>
+  <div class="half">
+    <div class="half-photo">
+      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=90" alt="Cosmo World">
+      <div class="half-time">16:10</div>
+      <div class="half-title">Yokohama Cosmo World</div>
+    </div>
+    <div class="half-body">
+      <div class="badges" style="margin-bottom:6px;">
+        <span class="badge bt">⏰ 16:10 – 17:30</span>
+        <span class="badge bc">💰 ชิงช้า ~900 เยน</span>
+      </div>
+      <p class="desc">Cosmo Clock 21 สูง 112 เมตร เคยเป็นชิงช้าสวรรค์ใหญ่ที่สุดในโลก 1 รอบ ~17 นาที ไฟกลางคืนสวยมาก</p>
+      <div class="tips" style="margin-top:6px;">
+        <p>🔥 ขึ้นก่อนพระอาทิตย์ตก → ได้ 2 วิว sunset + ไฟกลางคืน</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LANDMARK TOWER -->
+<div class="page stop-page">
+  <div class="stop-photo">
+    <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1400&q=90" alt="Landmark Tower">
+    <div class="stop-time">17:40</div>
+    <div class="stop-title">Landmark Tower<br>Sky Garden</div>
+  </div>
+  <div class="stop-info">
+    <div class="badges">
+      <span class="badge bt">⏰ 17:40 – 18:30</span>
+      <span class="badge bc">💰 ~1,000 เยน</span>
+      <span class="badge bw">🏢 ชั้น 69 · สูง 273 เมตร</span>
+    </div>
+    <p class="desc">ตึกสูงที่สุดในโยโกฮาม่า ลิฟต์เร็วที่สุดในญี่ปุ่น ขึ้นชั้น 69 ใน 40 วินาที Sky Garden วิวพาโนรามา 360 องศา กลางคืนสวยมาก มองเห็นฟูจิซันในวันที่อากาศดี</p>
+    <div class="tips">
+      <p>✅ ขึ้น Sky Garden ชม sunset → เปลี่ยนเป็น city lights สวยมาก</p>
+      <p>⚠️ เช็คเวลาเปิดก่อนไป — บางช่วงปิดปรับปรุง</p>
+    </div>
+  </div>
+</div>
+
+<!-- NIGHT -->
+<div class="page" style="background:#f5f0e8;">
+  <div class="night-hdr">
+    <h2>🌙 NIGHT PLAN</h2>
+    <p>18:30 – กลับโรงแรม · อาบน้ำ · <strong>เปลี่ยนชุด (สำคัญมาก!)</strong> · เติมพลัง · ออกกลางคืน</p>
+  </div>
+  <div class="night-label">19:45 · DINNER + WARM UP BAR — เลือก 1 อัน</div>
+  <div class="bar-row" style="flex:0 0 160px;">
+    <div class="bar-half">
+      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&q=85" alt="Bar 56s">
+      <div class="bar-tag">20:45 – 21:30</div>
+      <div class="bar-name">Bar 56's</div>
+    </div>
+    <div class="bar-half">
+      <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=900&q=85" alt="PUB SNUG">
+      <div class="bar-tag">20:45 – 21:30</div>
+      <div class="bar-name">PUB SNUG</div>
+    </div>
+  </div>
+  <div class="night-label" style="color:#c05060;border-top-color:rgba(192,80,96,.2);">21:45 · MAIN EVENT 🎧</div>
+  <div class="luther" style="flex:1;position:relative;">
+    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1400&q=90" alt="Bar Luther" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,8,4,.9) 0%,rgba(15,8,4,.55) 40%,transparent 100%);z-index:1;"></div>
+    <div class="luther-info" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:18px 20px;">
+      <h3>Bar Luther Dance Groove</h3>
+      <div class="badges" style="margin-bottom:8px;">
+        <span class="badge bt">⏰ 21:45 – 00:30</span>
+        <span class="badge bc">💰 ~3,000 เยน</span>
+      </div>
+      <div class="tips" style="background:rgba(245,240,232,.12);border-left-color:#e8c097;">
+        <p style="color:#f0e8d0;">✅ มีเพลง + dance floor &nbsp;|&nbsp; ✅ LGBTQ+ friendly &nbsp;|&nbsp; ✅ Vibe สนุก ไม่ toxic</p>
+        <p style="color:#f0e8d0;">🚕 กลับโรงแรม Taxi ~10 นาที ~1,000 เยน</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div class="page budget-page">
+  <div class="budget-photo">
+    <img src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1400&q=85" alt="Yokohama">
+    <div class="budget-title-box">
+      <h2>สรุปงบ<br><em>ทั้งวัน</em></h2>
+      <p>ประมาณการค่าใช้จ่าย · 1 คน · 1 วัน</p>
+    </div>
+  </div>
+  <div class="budget-body">
+    <div class="brow"><span class="bcat">🎡 เที่ยว / กิจกรรม</span><div class="bbar-w"><div class="bbar" style="width:44%"></div></div><span class="bamt">~2,000 ¥</span></div>
+    <div class="brow"><span class="bcat">🍜 กินอาหาร</span><div class="bbar-w"><div class="bbar" style="width:44%"></div></div><span class="bamt">~2,000 ¥</span></div>
+    <div class="brow"><span class="bcat">☕ คาเฟ่</span><div class="bbar-w"><div class="bbar" style="width:18%"></div></div><span class="bamt">~800 ¥</span></div>
+    <div class="brow"><span class="bcat">🌙 กลางคืน / บาร์</span><div class="bbar-w"><div class="bbar" style="width:67%"></div></div><span class="bamt">~3,000 ¥</span></div>
+    <div class="brow"><span class="bcat">🚕 Taxi</span><div class="bbar-w"><div class="bbar" style="width:22%"></div></div><span class="bamt">~1,000 ¥</span></div>
+    <div class="btotal">
+      <span class="btotal-lbl">TOTAL / DAY</span>
+      <div class="btotal-right">
+        <span class="btotal-amt">~8,000–9,000 ¥</span>
+        <span class="btotal-sub">(~2,000 บาท)</span>
+      </div>
+    </div>
+    <div class="insights">
+      <div class="icard"><span class="iemoji">🌅</span><div class="ititle">กลางวัน</div><p class="itext">Scenic + ชิล<br>วิวท่าเรือ สวนสาธารณะ<br>เดินเลียบอ่าว</p></div>
+      <div class="icard"><span class="iemoji">🌆</span><div class="ititle">กลางคืน</div><p class="itext">Fun + Social<br>Balance ดีมาก<br>สนุกไม่หนักเกิน</p></div>
+      <div class="icard"><span class="iemoji">🎯</span><div class="ititle">จุดพีคจริง</div><p class="itext">Cosmo World (sunset)<br>Luther (กลางคืน)<br>ห้ามพลาด!</p></div>
+    </div>
+    <div class="footer-txt">
+      YOKOHAMA MASTER PLAN &nbsp;·&nbsp; CONFIDENTIAL &nbsp;·&nbsp; 1 DAY FULL EXPERIENCE
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
