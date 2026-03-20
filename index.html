@@ -19,7 +19,7 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 .fab:hover{background:#3a2a18;transform:translateY(-2px);}
 
 /* ── PAGE ── */
-.page{width:100%;max-width:520px;background:var(--cream);margin:0 auto;position:relative;overflow:hidden;}
+.page{width:100%;background:var(--cream);margin:0 auto;position:relative;overflow:hidden;}
 
 /* ── COVER ── */
 .cover{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
@@ -118,10 +118,19 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 .itext{font-size:clamp(10px,2.8vw,13px);color:var(--muted);line-height:1.75;}
 .footer{padding:clamp(16px,4.5vw,24px);text-align:center;font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);color:rgba(26,20,16,.25);letter-spacing:3px;border-top:1px solid rgba(26,20,16,.1);}
 
-/* ── SCREEN ── */
+/* hide broken images gracefully */
+img{color:transparent;}
+img[alt]:after{
+  display:block;content:'';
+  position:absolute;inset:0;
+  background:var(--card2);
+}
+.gallery img, .hero-img, .budget-hero{
+  background:var(--card2);
+}
 @media screen{
-  body{padding:14px 0;}
-  .page{margin-bottom:14px;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);}
+  body{padding:0;}
+  .page{margin-bottom:0;border-radius:0;box-shadow:none;}
 }
 /* ── PRINT ── */
 @media print{
@@ -161,10 +170,10 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 
   <!-- Stop 1: Cup Noodles Museum -->
   <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=1000&q=85" alt="Cup Noodles Museum">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?w=1000&q=85" alt="Cup Noodles Museum Yokohama">
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=600&q=80" alt="Cup Noodles Museum interior">
-      <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Cup Noodles Museum exhibit">
+      <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Ramen noodles Japan">
+      <img src="https://images.unsplash.com/photo-1512003867696-6d5ce6835040?w=600&q=80" alt="Cup noodles">
     </div>
     <div class="stop-head">
       <div class="stop-time-row">
@@ -191,10 +200,10 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 
   <!-- Stop 2: Air Cabin -->
   <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1000&q=85" alt="Yokohama Air Cabin">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1000&q=85" alt="Yokohama Minatomirai Air Cabin">
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Air Cabin gondola">
-      <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=600&q=80" alt="Minatomirai view">
+      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="Yokohama waterfront view">
+      <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=600&q=80" alt="Yokohama city view">
     </div>
     <div class="stop-head">
       <div class="stop-time-row">
@@ -228,11 +237,11 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 
   <!-- Stop 3: Chinatown -->
   <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1000&q=85" alt="Yokohama Chinatown">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1000&q=85" alt="Yokohama Chinatown">
     <div class="gallery three">
-      <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=80" alt="Chinatown gate">
-      <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80" alt="Chinese food">
-      <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Street food">
+      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="Chinatown street lanterns">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Chinese food Japan">
+      <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=600&q=80" alt="Asian street food">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">12:00</span></div>
@@ -255,10 +264,10 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 
   <!-- Stop 4: Yamashita Park -->
   <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=1000&q=85" alt="Yamashita Park">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=1000&q=85" alt="Yamashita Park Yokohama">
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80" alt="Yamashita Park waterfront">
-      <img src="https://images.unsplash.com/photo-1553342385-111fd4d47c43?w=600&q=80" alt="Port view">
+      <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=600&q=80" alt="Japan park waterfront">
+      <img src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=600&q=80" alt="Yokohama port view">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">13:40</span></div>
@@ -285,10 +294,10 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 
   <!-- Stop 5: Red Brick -->
   <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1000&q=85" alt="Red Brick Warehouse">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1000&q=85" alt="Yokohama Red Brick Warehouse">
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Red Brick interior">
-      <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600&q=80" alt="Red Brick night">
+      <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=600&q=80" alt="Red Brick Warehouse view">
+      <img src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=600&q=80" alt="Yokohama waterfront night">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">14:50</span></div>
@@ -311,10 +320,10 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 
   <!-- Stop 6: Cosmo World -->
   <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1000&q=85" alt="Cosmo World">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1000&q=85" alt="Yokohama Cosmo World ferris wheel">
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?w=600&q=80" alt="Ferris wheel close">
-      <img src="https://images.unsplash.com/photo-1575994532935-b2e97be18e3e?w=600&q=80" alt="Night lights">
+      <img src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=600&q=80" alt="Ferris wheel at night">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Amusement park lights">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">16:10</span></div>
@@ -345,11 +354,11 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 
   <!-- Stop 7: Landmark Tower -->
   <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1000&q=85" alt="Landmark Tower">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1000&q=85" alt="Yokohama Landmark Tower night view">
     <div class="gallery three">
-      <img src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=600&q=80" alt="City view day">
-      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Night view">
-      <img src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=600&q=80" alt="Bay view">
+      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="Yokohama Red Brick area">
+      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Cosmo World night">
+      <img src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=600&q=80" alt="Yokohama skyline">
     </div>
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">17:40</span></div>
@@ -401,11 +410,11 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
   <!-- Stop 8: Bar Luther -->
   <div class="stop" style="background:#120c10;">
     <div class="luther-wrap">
-      <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1000&q=85" alt="Bar Luther">
+      <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1000&q=85" alt="Bar Luther Dance Groove">
     </div>
     <div class="gallery" style="background:#0c0808;">
-      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Dance floor" style="filter:brightness(.75);">
-      <img src="https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?w=600&q=80" alt="Bar atmosphere" style="filter:brightness(.75);">
+      <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=600&q=80" alt="Dance floor nightclub" style="filter:brightness(.8);">
+      <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80" alt="Bar drinks night" style="filter:brightness(.8);">
     </div>
     <div class="luther-info">
       <h3>Bar Luther Dance Groove</h3>
@@ -426,394 +435,8 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 <div class="page">
   <img class="budget-hero" src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1000&q=85" alt="Yokohama skyline">
   <div class="gallery three">
-    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="Red Brick">
-    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Chinatown">
-    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Cosmo World">
-  </div>
-  <div class="budget-title">
-    <h2>สรุปงบ<br><em>ทั้งวัน</em></h2>
-    <p>ประมาณการค่าใช้จ่าย · 1 คน · 1 วัน</p>
-  </div>
-  <div class="budget-body">
-    <div class="brow"><span class="bcat">🎡 เที่ยว</span><div class="bbar-w"><div class="bbar" style="width:44%"></div></div><span class="bamt">~2,000 ¥</span></div>
-    <div class="brow"><span class="bcat">🍜 กินอาหาร</span><div class="bbar-w"><div class="bbar" style="width:44%"></div></div><span class="bamt">~2,000 ¥</span></div>
-    <div class="brow"><span class="bcat">☕ คาเฟ่</span><div class="bbar-w"><div class="bbar" style="width:18%"></div></div><span class="bamt">~800 ¥</span></div>
-    <div class="brow"><span class="bcat">🌙 กลางคืน</span><div class="bbar-w"><div class="bbar" style="width:67%"></div></div><span class="bamt">~3,000 ¥</span></div>
-    <div class="brow"><span class="bcat">🚕 Taxi</span><div class="bbar-w"><div class="bbar" style="width:22%"></div></div><span class="bamt">~1,000 ¥</span></div>
-    <div class="btotal">
-      <span class="btotal-lbl">TOTAL / DAY</span>
-      <div>
-        <span class="btotal-amt">~8,000–9,000 ¥</span>
-        <span class="btotal-sub">(~2,000 บาท)</span>
-      </div>
-    </div>
-    <div class="insights">
-      <div class="icard"><span class="iemoji">🌅</span><div class="ititle">กลางวัน</div><p class="itext">Scenic + ชิล<br>วิวท่าเรือ<br>เดินเลียบอ่าว</p></div>
-      <div class="icard"><span class="iemoji">🌆</span><div class="ititle">กลางคืน</div><p class="itext">Fun + Social<br>Balance ดีมาก<br>ไม่หนักเกิน</p></div>
-      <div class="icard"><span class="iemoji">🎯</span><div class="ititle">จุดพีค</div><p class="itext">Cosmo (sunset)<br>Luther (คืน)<br>ห้ามพลาด!</p></div>
-    </div>
-  </div>
-  <div class="footer">YOKOHAMA MASTER PLAN · CONFIDENTIAL · 1 DAY FULL EXPERIENCE</div>
-</div>
-
-</body>
-</html>
-/* ── NIGHT SECTION ── */
-.night-hdr{background:linear-gradient(135deg,#28101a,#181828);padding:clamp(16px,4.5vw,24px) clamp(16px,4.5vw,22px);border-bottom:1px solid rgba(200,100,110,.3);}
-.night-hdr h2{font-family:'Playfair Display',serif;font-size:clamp(22px,6.5vw,30px);color:#eeb0b8;margin-bottom:5px;}
-.night-hdr p{font-size:clamp(12px,3.5vw,15px);color:#b8a0a0;line-height:1.7;}
-.night-hdr strong{color:#ffb8c0;}
-
-.night-label{padding:clamp(10px,3vw,14px) clamp(16px,4.5vw,22px);font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);letter-spacing:3px;background:#1a1010;color:#c06070;border-bottom:1px solid rgba(200,80,90,.2);}
-
-/* bar cards */
-.bar-pair{display:grid;grid-template-columns:1fr 1fr;background:#120c0c;}
-.bar-card{position:relative;}
-.bar-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:brightness(.8);}
-.bar-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,4,4,.92) 0%,transparent 100%);padding:clamp(10px,3vw,16px) clamp(10px,3vw,14px) clamp(8px,2.5vw,12px);}
-.bar-label h3{font-family:'Playfair Display',serif;font-size:clamp(15px,4.5vw,20px);color:#f0e8e0;margin-bottom:3px;}
-.bar-label span{font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);color:#c09080;}
-
-/* luther */
-.luther-wrap{position:relative;}
-.luther-wrap img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;}
-.luther-info{background:linear-gradient(135deg,#1a0c10,#10101a);padding:clamp(16px,4.5vw,22px) clamp(16px,4.5vw,22px);}
-.luther-info h3{font-family:'Playfair Display',serif;font-size:clamp(20px,6vw,28px);color:#f0e8e0;margin-bottom:10px;}
-
-/* ── BUDGET ── */
-.budget-hero{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
-.budget-title{padding:clamp(16px,4.5vw,24px) clamp(16px,4.5vw,22px) 0;}
-.budget-title h2{font-family:'Playfair Display',serif;font-size:clamp(34px,10vw,52px);font-weight:900;color:var(--ink);line-height:1;}
-.budget-title h2 em{color:var(--gold);font-style:italic;}
-.budget-title p{font-size:clamp(11px,3vw,13px);color:var(--muted);margin-top:5px;}
-.budget-body{padding:clamp(14px,4vw,20px) clamp(16px,4.5vw,22px);}
-.brow{display:flex;align-items:center;padding:clamp(9px,2.5vw,12px) 0;border-bottom:1px solid rgba(26,20,16,.1);}
-.brow:last-of-type{border-bottom:none;}
-.bcat{flex-shrink:0;width:36%;font-size:clamp(12px,3.5vw,15px);color:var(--muted);}
-.bbar-w{flex:1;height:6px;background:rgba(26,20,16,.1);border-radius:3px;margin:0 10px;}
-.bbar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--teal));}
-.bamt{font-family:'Space Mono',monospace;font-size:clamp(11px,3vw,14px);color:var(--ink);width:22%;text-align:right;flex-shrink:0;}
-.btotal{margin-top:clamp(12px,3.5vw,18px);padding-top:clamp(12px,3.5vw,18px);border-top:2px solid var(--gold);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;}
-.btotal-lbl{font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);color:var(--gold);letter-spacing:2px;padding-top:6px;}
-.btotal-amt{font-family:'Playfair Display',serif;font-size:clamp(24px,7vw,36px);font-weight:700;color:var(--gold);display:block;line-height:1.1;}
-.btotal-sub{font-size:clamp(12px,3.5vw,15px);color:var(--muted);}
-.insights{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,2.5vw,12px);margin-top:clamp(14px,4vw,20px);}
-.icard{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,4vw,18px) clamp(10px,3vw,14px);text-align:center;}
-.iemoji{font-size:clamp(24px,7vw,32px);display:block;margin-bottom:8px;}
-.ititle{font-family:'Playfair Display',serif;font-size:clamp(12px,3.5vw,15px);color:var(--gold);margin-bottom:5px;}
-.itext{font-size:clamp(10px,2.8vw,13px);color:var(--muted);line-height:1.75;}
-.footer{padding:clamp(16px,4.5vw,24px);text-align:center;font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);color:rgba(26,20,16,.25);letter-spacing:3px;border-top:1px solid rgba(26,20,16,.1);}
-
-/* ── SCREEN ── */
-@media screen{
-  body{padding:14px 0;}
-  .page{margin-bottom:14px;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);}
-}
-/* ── PRINT ── */
-@media print{
-  .fab{display:none !important;}
-  body{background:#ddd7cc !important;padding:0;}
-  .page{max-width:none !important;border-radius:0 !important;box-shadow:none !important;page-break-after:always;page-break-inside:avoid;}
-  @page{margin:0;}
-  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
-}
-</style>
-</head>
-<body>
-<button class="fab" onclick="window.print()">🖨️ บันทึกเป็น PDF</button>
-
-<!-- ══ COVER ══ -->
-<div class="page cover">
-  <div class="cover-bg"></div>
-  <div class="cover-inner">
-    <div class="cover-tag">Master Plan · One Day · Full Experience</div>
-    <h1>Yoko<em>hama</em></h1>
-    <p class="cover-sub">แผนการเดินทาง 1 วันเต็ม · ตั้งแต่เช้าจรดดึก · โยโกฮาม่า ประเทศญี่ปุ่น</p>
-    <div class="cover-stats">
-      <div class="cs"><span class="csv">09:30</span><span class="csl">เริ่มต้น</span></div>
-      <div class="cs"><span class="csv">00:30+</span><span class="csl">สิ้นสุด</span></div>
-      <div class="cs"><span class="csv">~2,000฿</span><span class="csl">งบทั้งวัน</span></div>
-      <div class="cs"><span class="csv">8 Stops</span><span class="csl">จุดหมาย</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ MORNING ══ -->
-<div class="page">
-  <div class="section-hdr">
-    <div class="section-hdr-tag">☀️ ช่วงเช้า</div>
-    <div class="section-hdr-title">Morning Exploration</div>
-  </div>
-
-  <!-- Stop 1: Cup Noodles Museum -->
-  <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=1000&q=85" alt="Cup Noodles Museum">
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=600&q=80" alt="Cup Noodles Museum interior">
-      <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Cup Noodles Museum exhibit">
-    </div>
-    <div class="stop-head">
-      <div class="stop-time-row">
-        <span class="stop-time">09:30</span>
-      </div>
-      <div class="stop-name">Cup Noodles Museum Yokohama</div>
-      <div class="badges">
-        <span class="badge bt">⏰ 09:30 – 11:00</span>
-        <span class="badge bc">💰 ~1,000 เยน</span>
-        <span class="badge bw">🚶 15 นาที จาก Sakuragicho</span>
-      </div>
-    </div>
-    <div class="stop-body">
-      <p class="desc">พิพิธภัณฑ์บะหมี่กึ่งสำเร็จรูปของ Momofuku Ando ผู้คิดค้นบะหมี่สำเร็จรูป พร้อมประสบการณ์ทำบะหมี่ในถ้วยด้วยตัวเอง เลือกลาย ส่วนผสม และ toppings ได้เอง</p>
-      <div class="tips">
-        <p>✅ เข้าไป → จองทำบะหมี่ทันที (Slot จำกัดมาก)</p>
-        <p>✅ เดินดูนิทรรศการก่อน → กลับมาทำตอนครบเวลา</p>
-        <p>💰 ค่าเข้า ~500 เยน + ทำบะหมี่ ~500 เยน</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="walk">เดิน 5–7 นาที จากพิพิธภัณฑ์ → สถานี Sakuragicho</div>
-
-  <!-- Stop 2: Air Cabin -->
-  <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1000&q=85" alt="Yokohama Air Cabin">
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Air Cabin gondola">
-      <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=600&q=80" alt="Minatomirai view">
-    </div>
-    <div class="stop-head">
-      <div class="stop-time-row">
-        <span class="stop-time">11:10</span>
-      </div>
-      <div class="stop-name">Yokohama Air Cabin</div>
-      <div class="badges">
-        <span class="badge bt">⏰ 11:10 – 11:35</span>
-        <span class="badge bc">💰 ~1,000 เยน</span>
-        <span class="badge bw">🚡 Sakuragicho → Unga Park</span>
-      </div>
-    </div>
-    <div class="stop-body">
-      <p class="desc">กระเช้าไฟฟ้าในเมืองสายแรกของญี่ปุ่น ระยะทาง 630 เมตร วิวท่าเรือ Minatomirai 360 องศา มองเห็น Cosmo World และ Landmark Tower พร้อมกัน</p>
-      <div class="tips">
-        <p>✅ ใช้เวลาสั้น แต่วิวคุ้มมาก ถ่ายรูปสวยมาก</p>
-        <p>📍 จุดขึ้นอยู่ติดสถานี Sakuragicho เลย</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ AFTERNOON ══ -->
-<div class="page">
-  <div class="section-hdr">
-    <div class="section-hdr-tag">🌤️ ช่วงบ่าย</div>
-    <div class="section-hdr-title">Afternoon Adventure</div>
-  </div>
-
-  <div class="walk">เดิน ~20 นาที เลียบทะเลไป Chinatown (วิวสวยมาก)</div>
-
-  <!-- Stop 3: Chinatown -->
-  <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1000&q=85" alt="Yokohama Chinatown">
-    <div class="gallery three">
-      <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=80" alt="Chinatown gate">
-      <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80" alt="Chinese food">
-      <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Street food">
-    </div>
-    <div class="stop-head">
-      <div class="stop-time-row"><span class="stop-time">12:00</span></div>
-      <div class="stop-name">Yokohama Chinatown</div>
-      <div class="badges">
-        <span class="badge bt">⏰ 12:00 – 13:30</span>
-        <span class="badge bc">💰 ~1,000–2,000 เยน</span>
-      </div>
-    </div>
-    <div class="stop-body">
-      <p class="desc">ไชนาทาวน์ใหญ่ที่สุดในญี่ปุ่น 600+ ร้าน บรรยากาศสีแดงทอง โคมไฟ ประตูโบราณ กลิ่นอาหารหอมล่อใจ เดินกินแบบ street food</p>
-      <div class="tips">
-        <p>🍱 แผนกิน: 1. ซาลาเปา · 2. เสี่ยวหลงเปา · 3. ของทอด</p>
-        <p>👉 "3 ร้าน = อิ่มพอดี ไม่เลี่ยน"</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="walk">เดิน 10 นาที</div>
-
-  <!-- Stop 4: Yamashita Park -->
-  <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=1000&q=85" alt="Yamashita Park">
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80" alt="Yamashita Park waterfront">
-      <img src="https://images.unsplash.com/photo-1553342385-111fd4d47c43?w=600&q=80" alt="Port view">
-    </div>
-    <div class="stop-head">
-      <div class="stop-time-row"><span class="stop-time">13:40</span></div>
-      <div class="stop-name">Yamashita Park</div>
-      <div class="badges">
-        <span class="badge bt">⏰ 13:40 – 14:20</span>
-        <span class="badge bc">💰 ฟรี</span>
-        <span class="badge bw">🚶 10 นาที จาก Chinatown</span>
-      </div>
-    </div>
-    <div class="stop-body">
-      <p class="desc">สวนสาธารณะริมทะเลยาวกว่า 700 เมตร นั่งพักย่อยอาหาร ดูวิวท่าเรือ มองเห็น Landmark Tower ตระหง่านและ NYK Hikawa Maru เรือพิพิธภัณฑ์ยุค 1930</p>
-      <div class="tips">
-        <p>✅ นั่งพัก เดินย่อยอาหารชิลๆ ริมทะเล</p>
-        <p>⚓ ถ่ายรูปกับ NYK Hikawa Maru</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ AFTERNOON 2 ══ -->
-<div class="page">
-  <div class="walk" style="border-top:2px solid var(--card2);">เดิน 25–30 นาที เลียบอ่าว (วิวสวยมาก แนะนำเดินแทนรถ)</div>
-
-  <!-- Stop 5: Red Brick -->
-  <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1000&q=85" alt="Red Brick Warehouse">
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Red Brick interior">
-      <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600&q=80" alt="Red Brick night">
-    </div>
-    <div class="stop-head">
-      <div class="stop-time-row"><span class="stop-time">14:50</span></div>
-      <div class="stop-name">Yokohama Red Brick Warehouse</div>
-      <div class="badges">
-        <span class="badge bt">⏰ 14:50 – 16:00</span>
-        <span class="badge bc">💰 คาเฟ่ ~600–1,000 เยน</span>
-      </div>
-    </div>
-    <div class="stop-body">
-      <p class="desc">โกดังอิฐแดงอายุ 100+ ปี ปัจจุบันเป็น complex ร้านค้า คาเฟ่ ริมทะเล บรรยากาศวินเทจสวยงาม วิวท่าเรือสวยมากทั้งกลางวันและกลางคืน</p>
-      <div class="tips">
-        <p>✅ แวะเข้าคาเฟ่ 1 ร้าน นั่งพักริมน้ำดูวิว</p>
-        <p>✅ เดินดูของ ช้อปปิ้งเบาๆ หาของที่ระลึก</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="walk">เดิน 10 นาที</div>
-
-  <!-- Stop 6: Cosmo World -->
-  <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1000&q=85" alt="Cosmo World">
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?w=600&q=80" alt="Ferris wheel close">
-      <img src="https://images.unsplash.com/photo-1575994532935-b2e97be18e3e?w=600&q=80" alt="Night lights">
-    </div>
-    <div class="stop-head">
-      <div class="stop-time-row"><span class="stop-time">16:10</span></div>
-      <div class="stop-name">Yokohama Cosmo World</div>
-      <div class="badges">
-        <span class="badge bt">⏰ 16:10 – 17:30</span>
-        <span class="badge bc">💰 ชิงช้า ~900 เยน</span>
-      </div>
-    </div>
-    <div class="stop-body">
-      <p class="desc">Cosmo Clock 21 สูง 112 เมตร เคยเป็นชิงช้าสวรรค์ใหญ่ที่สุดในโลก 1 รอบ ~17 นาที ไฟกลางคืนสวยมากเป็นพิเศษ</p>
-      <div class="tips">
-        <p>🔥 ขึ้นก่อนพระอาทิตย์ตก ประมาณ 16:30–17:00</p>
-        <p>✅ ได้ 2 วิว — แสงทองพลบค่ำ + ไฟกลางคืนเริ่มติด</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ EVENING ══ -->
-<div class="page">
-  <div class="section-hdr">
-    <div class="section-hdr-tag">🌅 ช่วงเย็น</div>
-    <div class="section-hdr-title">Golden Hour & Sunset</div>
-  </div>
-
-  <div class="walk">เดิน 10 นาที</div>
-
-  <!-- Stop 7: Landmark Tower -->
-  <div class="stop">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1000&q=85" alt="Landmark Tower">
-    <div class="gallery three">
-      <img src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=600&q=80" alt="City view day">
-      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Night view">
-      <img src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=600&q=80" alt="Bay view">
-    </div>
-    <div class="stop-head">
-      <div class="stop-time-row"><span class="stop-time">17:40</span></div>
-      <div class="stop-name">Landmark Tower — Sky Garden</div>
-      <div class="badges">
-        <span class="badge bt">⏰ 17:40 – 18:30</span>
-        <span class="badge bc">💰 ~1,000 เยน</span>
-        <span class="badge bw">🏢 ชั้น 69 · สูง 273 เมตร</span>
-      </div>
-    </div>
-    <div class="stop-body">
-      <p class="desc">ตึกสูงที่สุดในโยโกฮาม่า ลิฟต์เร็วที่สุดในญี่ปุ่น ขึ้นชั้น 69 ใน 40 วินาที Sky Garden วิวพาโนรามา 360 องศา กลางคืนสวยมาก มองเห็นฟูจิซันวันที่อากาศดี</p>
-      <div class="tips">
-        <p>✅ ขึ้น Sky Garden ชม sunset → เปลี่ยนเป็น city lights</p>
-        <p>⚠️ เช็คเวลาเปิดก่อนไป — บางช่วงปิดปรับปรุง</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ NIGHT ══ -->
-<div class="page">
-  <div class="night-hdr">
-    <h2>🌙 NIGHT PLAN</h2>
-    <p>18:30 – กลับโรงแรม · อาบน้ำ · <strong>เปลี่ยนชุด (สำคัญมาก!)</strong> · เติมพลัง</p>
-  </div>
-
-  <div class="night-label">19:45 · DINNER + WARM UP BAR — เลือก 1 อัน</div>
-
-  <div class="bar-pair">
-    <div class="bar-card">
-      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=700&q=85" alt="Bar 56s">
-      <div class="bar-label">
-        <h3>Bar 56's</h3>
-        <span>20:45 – 21:30 · วอร์มบาร์ เบาๆ ก่อน</span>
-      </div>
-    </div>
-    <div class="bar-card">
-      <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=700&q=85" alt="PUB SNUG">
-      <div class="bar-label">
-        <h3>PUB SNUG</h3>
-        <span>20:45 – 21:30 · บรรยากาศดี ไม่หนัก</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="night-label" style="color:#d07080;border-top-color:rgba(200,90,100,.25);">21:45 · MAIN EVENT 🎧</div>
-
-  <!-- Stop 8: Bar Luther -->
-  <div class="stop" style="background:#120c10;">
-    <div class="luther-wrap">
-      <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1000&q=85" alt="Bar Luther">
-    </div>
-    <div class="gallery" style="background:#0c0808;">
-      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Dance floor" style="filter:brightness(.75);">
-      <img src="https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?w=600&q=80" alt="Bar atmosphere" style="filter:brightness(.75);">
-    </div>
-    <div class="luther-info">
-      <h3>Bar Luther Dance Groove</h3>
-      <div class="badges" style="margin-bottom:12px;">
-        <span class="badge bt">⏰ 21:45 – 00:30</span>
-        <span class="badge bc">💰 ~3,000 เยน</span>
-      </div>
-      <div class="tips" style="background:rgba(255,240,230,.08);border-left-color:#d09060;">
-        <p style="color:#e8d8c0;">✅ มีเพลง + dance floor · LGBTQ+ friendly</p>
-        <p style="color:#e8d8c0;">✅ Vibe สนุก ไม่ toxic</p>
-        <p style="color:#e8d8c0;">🚕 กลับโรงแรม Taxi ~10 นาที ~1,000 เยน</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ BUDGET ══ -->
-<div class="page">
-  <img class="budget-hero" src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1000&q=85" alt="Yokohama skyline">
-  <div class="gallery three">
-    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="Red Brick">
-    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Chinatown">
+    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="Red Brick Warehouse">
+    <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="Chinatown">
     <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Cosmo World">
   </div>
   <div class="budget-title">
