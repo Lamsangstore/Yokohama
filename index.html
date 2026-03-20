@@ -1,1 +1,595 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yokohama Master Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Noto+Sans+Thai:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#8a6520; --teal:#1a7a6e; --red:#b02838;
+  --cream:#f5f0e8; --card:#ede8dc; --card2:#e4ddd0;
+  --ink:#1a1410; --muted:#6b5e4e; --border:rgba(138,101,32,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+/* ── FAB ── */
+.fab{position:fixed;bottom:20px;right:20px;z-index:999;background:var(--ink);color:var(--cream);border:none;padding:14px 28px;border-radius:40px;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;box-shadow:0 6px 24px rgba(0,0,0,.35);transition:all .2s;}
+.fab:hover{background:#3a2a18;transform:translateY(-2px);}
+
+/* ── PAGE ── */
+.page{width:100%;background:var(--cream);margin:0 auto;position:relative;overflow:hidden;}
+
+/* ── COVER ── */
+.cover{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
+.cover-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,240,232,.05) 0%,rgba(245,240,232,.25) 40%,rgba(245,240,232,.97) 100%),url('https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1200&q=90') center/cover;}
+.cover-inner{position:relative;z-index:1;padding:0 6vw 8vw;}
+.cover-tag{font-family:'Space Mono',monospace;font-size:clamp(9px,2.8vw,12px);letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.cover-tag::before{content:'';width:32px;height:1px;background:var(--gold);}
+.cover h1{font-family:'Playfair Display',serif;font-size:clamp(58px,19vw,96px);font-weight:900;line-height:.88;letter-spacing:-2px;color:var(--ink);margin-bottom:10px;}
+.cover h1 em{color:var(--gold);font-style:italic;}
+.cover-sub{font-size:clamp(13px,3.8vw,16px);color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:26px;}
+.cover-stats{display:flex;flex-wrap:wrap;border-top:1px solid rgba(138,101,32,.3);padding-top:18px;gap:4px 0;}
+.cs{flex:1;min-width:44%;padding-right:14px;}
+.cs:not(:last-child){border-right:1px solid rgba(26,20,16,.1);margin-right:14px;}
+.csv{font-family:'Playfair Display',serif;font-size:clamp(18px,5.5vw,26px);font-weight:700;color:var(--gold);display:block;line-height:1.1;}
+.csl{font-size:clamp(8px,2.2vw,10px);color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+
+/* ── SECTION HEADER ── */
+.section-hdr{background:var(--card2);padding:clamp(12px,3vw,18px) clamp(16px,4vw,22px);border-bottom:2px solid var(--border);}
+.section-hdr-tag{font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.section-hdr-title{font-family:'Playfair Display',serif;font-size:clamp(22px,6.5vw,30px);font-weight:700;color:var(--ink);}
+
+/* ── STOP CARD ── */
+.stop{background:var(--cream);border-bottom:2px solid var(--card2);}
+.stop:last-child{border-bottom:none;}
+
+/* hero image */
+.hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+
+/* photo gallery strip */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--card2);}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.gallery.three{grid-template-columns:1fr 1fr 1fr;}
+
+/* stop content */
+.stop-head{padding:clamp(14px,4vw,20px) clamp(16px,4.5vw,22px) 0;}
+.stop-time-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.stop-time{font-family:'Space Mono',monospace;font-size:clamp(13px,3.8vw,16px);font-weight:700;color:var(--gold);background:rgba(138,101,32,.1);padding:5px 14px;border-radius:20px;border:1px solid var(--border);}
+.stop-name{font-family:'Playfair Display',serif;font-size:clamp(20px,6vw,28px);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:10px;}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.badge{font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);padding:5px 12px;border-radius:20px;line-height:1.4;}
+.bt{background:rgba(26,122,110,.1);color:var(--teal);border:1px solid rgba(26,122,110,.3);}
+.bc{background:rgba(138,101,32,.12);color:var(--gold);border:1px solid rgba(138,101,32,.3);}
+.bw{background:rgba(26,20,16,.06);color:var(--muted);border:1px solid rgba(26,20,16,.15);}
+.stop-body{padding:0 clamp(16px,4.5vw,22px) clamp(16px,4vw,22px);}
+.desc{font-size:clamp(13px,3.8vw,16px);color:#3a2e1e;line-height:1.85;margin-bottom:12px;}
+.tips{background:rgba(138,101,32,.07);border-left:3px solid var(--gold);padding:clamp(10px,3vw,14px) clamp(12px,3.5vw,18px);border-radius:0 8px 8px 0;}
+.tips p{font-size:clamp(12px,3.5vw,15px);color:#4a3820;line-height:1.9;}
+
+/* walk connector */
+.walk{display:flex;align-items:center;gap:10px;padding:clamp(10px,3vw,14px) clamp(16px,4.5vw,22px);background:var(--card);font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);color:var(--muted);letter-spacing:.5px;}
+.walk::before{content:'↓';font-size:clamp(14px,4vw,18px);color:var(--teal);flex-shrink:0;}
+
+/* ── NIGHT SECTION ── */
+.night-hdr{background:linear-gradient(135deg,#28101a,#181828);padding:clamp(16px,4.5vw,24px) clamp(16px,4.5vw,22px);border-bottom:1px solid rgba(200,100,110,.3);}
+.night-hdr h2{font-family:'Playfair Display',serif;font-size:clamp(22px,6.5vw,30px);color:#eeb0b8;margin-bottom:5px;}
+.night-hdr p{font-size:clamp(12px,3.5vw,15px);color:#b8a0a0;line-height:1.7;}
+.night-hdr strong{color:#ffb8c0;}
+
+.night-label{padding:clamp(10px,3vw,14px) clamp(16px,4.5vw,22px);font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);letter-spacing:3px;background:#1a1010;color:#c06070;border-bottom:1px solid rgba(200,80,90,.2);}
+
+/* bar cards */
+.bar-pair{display:grid;grid-template-columns:1fr 1fr;background:#120c0c;}
+.bar-card{position:relative;}
+.bar-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:brightness(.8);}
+.bar-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,4,4,.92) 0%,transparent 100%);padding:clamp(10px,3vw,16px) clamp(10px,3vw,14px) clamp(8px,2.5vw,12px);}
+.bar-label h3{font-family:'Playfair Display',serif;font-size:clamp(15px,4.5vw,20px);color:#f0e8e0;margin-bottom:3px;}
+.bar-label span{font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);color:#c09080;}
+
+/* luther */
+.luther-wrap{position:relative;}
+.luther-wrap img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;}
+.luther-info{background:linear-gradient(135deg,#1a0c10,#10101a);padding:clamp(16px,4.5vw,22px) clamp(16px,4.5vw,22px);}
+.luther-info h3{font-family:'Playfair Display',serif;font-size:clamp(20px,6vw,28px);color:#f0e8e0;margin-bottom:10px;}
+
+/* ── BUDGET ── */
+.budget-hero{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+.budget-title{padding:clamp(16px,4.5vw,24px) clamp(16px,4.5vw,22px) 0;}
+.budget-title h2{font-family:'Playfair Display',serif;font-size:clamp(34px,10vw,52px);font-weight:900;color:var(--ink);line-height:1;}
+.budget-title h2 em{color:var(--gold);font-style:italic;}
+.budget-title p{font-size:clamp(11px,3vw,13px);color:var(--muted);margin-top:5px;}
+.budget-body{padding:clamp(14px,4vw,20px) clamp(16px,4.5vw,22px);}
+.brow{display:flex;align-items:center;padding:clamp(9px,2.5vw,12px) 0;border-bottom:1px solid rgba(26,20,16,.1);}
+.brow:last-of-type{border-bottom:none;}
+.bcat{flex-shrink:0;width:36%;font-size:clamp(12px,3.5vw,15px);color:var(--muted);}
+.bbar-w{flex:1;height:6px;background:rgba(26,20,16,.1);border-radius:3px;margin:0 10px;}
+.bbar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--teal));}
+.bamt{font-family:'Space Mono',monospace;font-size:clamp(11px,3vw,14px);color:var(--ink);width:22%;text-align:right;flex-shrink:0;}
+.btotal{margin-top:clamp(12px,3.5vw,18px);padding-top:clamp(12px,3.5vw,18px);border-top:2px solid var(--gold);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;}
+.btotal-lbl{font-family:'Space Mono',monospace;font-size:clamp(9px,2.5vw,11px);color:var(--gold);letter-spacing:2px;padding-top:6px;}
+.btotal-amt{font-family:'Playfair Display',serif;font-size:clamp(24px,7vw,36px);font-weight:700;color:var(--gold);display:block;line-height:1.1;}
+.btotal-sub{font-size:clamp(12px,3.5vw,15px);color:var(--muted);}
+.insights{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,2.5vw,12px);margin-top:clamp(14px,4vw,20px);}
+.icard{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,4vw,18px) clamp(10px,3vw,14px);text-align:center;}
+.iemoji{font-size:clamp(24px,7vw,32px);display:block;margin-bottom:8px;}
+.ititle{font-family:'Playfair Display',serif;font-size:clamp(12px,3.5vw,15px);color:var(--gold);margin-bottom:5px;}
+.itext{font-size:clamp(10px,2.8vw,13px);color:var(--muted);line-height:1.75;}
+.footer{padding:clamp(16px,4.5vw,24px);text-align:center;font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);color:rgba(26,20,16,.25);letter-spacing:3px;border-top:1px solid rgba(26,20,16,.1);}
+
+/* hide broken images gracefully */
+img{color:transparent;}
+img[alt]:after{
+  display:block;content:'';
+  position:absolute;inset:0;
+  background:var(--card2);
+}
+.gallery img, .hero-img, .budget-hero{
+  background:var(--card2);
+}
+@media screen{
+  body{padding:0;}
+  .page{margin-bottom:0;border-radius:0;box-shadow:none;}
+}
+/* ── PRINT ── */
+@media print{
+  .fab{display:none !important;}
+  body{background:#ddd7cc !important;padding:0;margin:0;}
+  @page{size:A4 portrait;margin:0;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+
+  /* Cover = 1 A4 page */
+  .cover{
+    width:210mm; height:297mm;
+    page-break-after:always;
+    overflow:hidden;
+    display:flex; flex-direction:column; justify-content:flex-end;
+  }
+
+  /* Each .page block = new A4 page */
+  .page{
+    width:210mm;
+    page-break-after:always;
+    page-break-inside:avoid;
+    overflow:hidden;
+    border-radius:0 !important;
+    box-shadow:none !important;
+  }
+
+  /* Section header - compact */
+  .section-hdr{padding:6px 14px !important;}
+  .section-hdr-tag{font-size:7px !important;}
+  .section-hdr-title{font-size:16px !important;}
+
+  /* walk connector - compact */
+  .walk{padding:4px 14px !important;font-size:7.5px !important;}
+
+  /* Each stop fits A4 */
+  .stop{
+    page-break-inside:avoid;
+    border-bottom:1px solid var(--card2) !important;
+  }
+
+  /* Hero image - limit height so content fits */
+  .hero-img{
+    width:100% !important;
+    height:90mm !important;
+    aspect-ratio:unset !important;
+    object-fit:cover !important;
+  }
+
+  /* Gallery images */
+  .gallery{gap:1px !important;}
+  .gallery img{
+    height:38mm !important;
+    aspect-ratio:unset !important;
+    object-fit:cover !important;
+  }
+  .gallery.three img{height:32mm !important;}
+
+  /* Stop content compact */
+  .stop-head{padding:6px 12px 0 !important;}
+  .stop-time{font-size:9px !important;padding:3px 10px !important;}
+  .stop-name{font-size:14px !important;margin-bottom:5px !important;}
+  .badges{gap:3px !important;margin-bottom:6px !important;}
+  .badge{font-size:7px !important;padding:2px 8px !important;}
+  .stop-body{padding:0 12px 8px !important;}
+  .desc{font-size:9px !important;line-height:1.55 !important;margin-bottom:6px !important;}
+  .tips{padding:6px 10px !important;}
+  .tips p{font-size:8px !important;line-height:1.6 !important;}
+
+  /* Night page compact */
+  .night-hdr{padding:8px 14px !important;}
+  .night-hdr h2{font-size:14px !important;}
+  .night-hdr p{font-size:8px !important;}
+  .night-label{padding:5px 14px !important;font-size:7px !important;}
+  .bar-pair img{height:40mm !important;object-fit:cover !important;}
+  .bar-label h3{font-size:11px !important;}
+  .bar-label span{font-size:7px !important;}
+  .luther-wrap img{
+    width:100% !important;
+    height:65mm !important;
+    object-fit:cover !important;
+  }
+  .luther-info{padding:8px 12px !important;}
+  .luther-info h3{font-size:13px !important;margin-bottom:5px !important;}
+
+  /* Budget page */
+  .budget-hero{height:55mm !important;object-fit:cover !important;}
+  .budget-title{padding:6px 12px 0 !important;}
+  .budget-title h2{font-size:26px !important;}
+  .budget-title p{font-size:8px !important;}
+  .budget-body{padding:8px 12px !important;}
+  .brow{padding:5px 0 !important;}
+  .bcat{font-size:9px !important;}
+  .bamt{font-size:9px !important;}
+  .bbar-w{height:4px !important;}
+  .btotal{margin-top:6px !important;padding-top:6px !important;}
+  .btotal-amt{font-size:18px !important;}
+  .btotal-sub{font-size:9px !important;}
+  .insights{gap:5px !important;margin-top:8px !important;}
+  .icard{padding:8px 8px !important;}
+  .iemoji{font-size:18px !important;margin-bottom:4px !important;}
+  .ititle{font-size:9px !important;}
+  .itext{font-size:8px !important;line-height:1.5 !important;}
+  .footer{padding:8px !important;font-size:6px !important;}
+
+  /* Cover text sizes */
+  .cover h1{font-size:52px !important;}
+  .cover-sub{font-size:10px !important;margin-bottom:14px !important;}
+  .csv{font-size:16px !important;}
+  .csl{font-size:7px !important;}
+  .cover-stats{padding-top:10px !important;}
+  .cover-inner{padding:0 10mm 12mm !important;}
+}
+</style>
+</head>
+<body>
+<button class="fab" onclick="window.print()">🖨️ บันทึกเป็น PDF</button>
+
+<!-- ══ COVER ══ -->
+<div class="page cover">
+  <div class="cover-bg"></div>
+  <div class="cover-inner">
+    <div class="cover-tag">Master Plan · One Day · Full Experience</div>
+    <h1>Yoko<em>hama</em></h1>
+    <p class="cover-sub">แผนการเดินทาง 1 วันเต็ม · ตั้งแต่เช้าจรดดึก · โยโกฮาม่า ประเทศญี่ปุ่น</p>
+    <div class="cover-stats">
+      <div class="cs"><span class="csv">09:30</span><span class="csl">เริ่มต้น</span></div>
+      <div class="cs"><span class="csv">00:30+</span><span class="csl">สิ้นสุด</span></div>
+      <div class="cs"><span class="csv">~2,000฿</span><span class="csl">งบทั้งวัน</span></div>
+      <div class="cs"><span class="csv">8 Stops</span><span class="csl">จุดหมาย</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MORNING ══ -->
+<div class="page">
+  <div class="section-hdr">
+    <div class="section-hdr-tag">☀️ ช่วงเช้า</div>
+    <div class="section-hdr-title">Morning Exploration</div>
+  </div>
+  <div class="stop">
+    <img class="hero-img" src="images/img_01.jpg" alt="Cup Noodles Museum Yokohama exterior">
+    <div class="gallery">
+      <img src="images/img_02.jpg" alt="Cup Noodles Museum noodle wall with visitors">
+      <img src="images/img_03.jpg" alt="Cup Noodles Museum noodle wall exhibit">
+    </div>
+    <div class="stop-head">
+      <div class="stop-time-row">
+        <span class="stop-time">09:30</span>
+      </div>
+      <div class="stop-name">Cup Noodles Museum Yokohama</div>
+      <div class="badges">
+        <span class="badge bt">⏰ 09:30 – 11:00</span>
+        <span class="badge bc">💰 ~1,000 เยน</span>
+        <span class="badge bw">🚶 15 นาที จาก Sakuragicho</span>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="desc">พิพิธภัณฑ์บะหมี่กึ่งสำเร็จรูปของ Momofuku Ando ผู้คิดค้นบะหมี่สำเร็จรูป พร้อมประสบการณ์ทำบะหมี่ในถ้วยด้วยตัวเอง เลือกลาย ส่วนผสม และ toppings ได้เอง</p>
+      <div class="tips">
+        <p>✅ เข้าไป → จองทำบะหมี่ทันที (Slot จำกัดมาก)</p>
+        <p>✅ เดินดูนิทรรศการก่อน → กลับมาทำตอนครบเวลา</p>
+        <p>💰 ค่าเข้า ~500 เยน + ทำบะหมี่ ~500 เยน</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="walk">เดิน 5–7 นาที จากพิพิธภัณฑ์ → สถานี Sakuragicho</div>
+  <div class="stop">
+    <img class="hero-img" src="images/img_04.jpg" alt="Yokohama Air Cabin night">
+    <div class="gallery">
+      <img src="images/img_05.jpg" alt="Yokohama Air Cabin day view">
+      <img src="images/img_06.jpg" alt="Yokohama Air Cabin station entrance">
+    </div>
+    <div class="stop-head">
+      <div class="stop-time-row">
+        <span class="stop-time">11:10</span>
+      </div>
+      <div class="stop-name">Yokohama Air Cabin</div>
+      <div class="badges">
+        <span class="badge bt">⏰ 11:10 – 11:35</span>
+        <span class="badge bc">💰 ~1,000 เยน</span>
+        <span class="badge bw">🚡 Sakuragicho → Unga Park</span>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="desc">กระเช้าไฟฟ้าในเมืองสายแรกของญี่ปุ่น ระยะทาง 630 เมตร วิวท่าเรือ Minatomirai 360 องศา มองเห็น Cosmo World และ Landmark Tower พร้อมกัน</p>
+      <div class="tips">
+        <p>✅ ใช้เวลาสั้น แต่วิวคุ้มมาก ถ่ายรูปสวยมาก</p>
+        <p>📍 จุดขึ้นอยู่ติดสถานี Sakuragicho เลย</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ AFTERNOON ══ -->
+<div class="page">
+  <div class="section-hdr">
+    <div class="section-hdr-tag">🌤️ ช่วงบ่าย</div>
+    <div class="section-hdr-title">Afternoon Adventure</div>
+  </div>
+  <div class="walk">เดิน ~20 นาที เลียบทะเลไป Chinatown (วิวสวยมาก)</div>
+  <div class="stop">
+    <img class="hero-img" src="images/img_07.jpg" alt="Yokohama Chinatown lanterns crowd">
+    <div class="gallery">
+      <img src="images/img_08.jpg" alt="Yokohama Chinatown gate">
+      <img src="images/img_09.jpg" alt="Yokohama Chinatown street evening">
+    </div>
+    <div class="stop-head">
+      <div class="stop-time-row"><span class="stop-time">12:00</span></div>
+      <div class="stop-name">Yokohama Chinatown</div>
+      <div class="badges">
+        <span class="badge bt">⏰ 12:00 – 13:30</span>
+        <span class="badge bc">💰 ~1,000–2,000 เยน</span>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="desc">ไชนาทาวน์ใหญ่ที่สุดในญี่ปุ่น 600+ ร้าน บรรยากาศสีแดงทอง โคมไฟ ประตูโบราณ กลิ่นอาหารหอมล่อใจ เดินกินแบบ street food</p>
+      <div class="tips">
+        <p>🍱 แผนกิน: 1. ซาลาเปา · 2. เสี่ยวหลงเปา · 3. ของทอด</p>
+        <p>👉 "3 ร้าน = อิ่มพอดี ไม่เลี่ยน"</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="walk">เดิน 10 นาที</div>
+  <div class="stop">
+    <img class="hero-img" src="images/img_10.jpg" alt="Yamashita Park NYK Hikawa Maru">
+    <div class="gallery">
+      <img src="images/img_11.jpg" alt="Yamashita Park fountain garden">
+      <img src="images/img_12.jpg" alt="Yamashita Park Hikawa Maru ship">
+    </div>
+    <div class="stop-head">
+      <div class="stop-time-row"><span class="stop-time">13:40</span></div>
+      <div class="stop-name">Yamashita Park</div>
+      <div class="badges">
+        <span class="badge bt">⏰ 13:40 – 14:20</span>
+        <span class="badge bc">💰 ฟรี</span>
+        <span class="badge bw">🚶 10 นาที จาก Chinatown</span>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="desc">สวนสาธารณะริมทะเลยาวกว่า 700 เมตร นั่งพักย่อยอาหาร ดูวิวท่าเรือ มองเห็น Landmark Tower ตระหง่านและ NYK Hikawa Maru เรือพิพิธภัณฑ์ยุค 1930</p>
+      <div class="tips">
+        <p>✅ นั่งพัก เดินย่อยอาหารชิลๆ ริมทะเล</p>
+        <p>⚓ ถ่ายรูปกับ NYK Hikawa Maru</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ AFTERNOON 2 ══ -->
+<div class="page">
+  <div class="section-hdr">
+    <div class="section-hdr-tag">🌤️ ช่วงบ่าย (ต่อ)</div>
+    <div class="section-hdr-title">More Afternoon</div>
+  </div>
+  <div class="walk">เดิน 10 นาที</div>
+  <div class="stop">
+    <img class="hero-img" src="images/img_13.jpg" alt="Red Brick Warehouse with Landmark Tower">
+    <div class="gallery">
+      <img src="images/img_14.jpg" alt="Red Brick Warehouse daytime">
+      <img src="images/img_15.jpg" alt="Red Brick Warehouse night illumination">
+    </div>
+    <div class="stop-head">
+      <div class="stop-time-row"><span class="stop-time">14:50</span></div>
+      <div class="stop-name">Yokohama Red Brick Warehouse</div>
+      <div class="badges">
+        <span class="badge bt">⏰ 14:50 – 16:00</span>
+        <span class="badge bc">💰 คาเฟ่ ~600–1,000 เยน</span>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="desc">โกดังอิฐแดงอายุ 100+ ปี ปัจจุบันเป็น complex ร้านค้า คาเฟ่ ริมทะเล บรรยากาศวินเทจสวยงาม วิวท่าเรือสวยมากทั้งกลางวันและกลางคืน</p>
+      <div class="tips">
+        <p>✅ แวะเข้าคาเฟ่ 1 ร้าน นั่งพักริมน้ำดูวิว</p>
+        <p>✅ เดินดูของ ช้อปปิ้งเบาๆ หาของที่ระลึก</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="walk">เดิน 10 นาที</div>
+  <div class="stop">
+    <img class="hero-img" src="images/img_16.jpg" alt="Yokohama Cosmo World Ferris Wheel day">
+    <div class="gallery">
+      <img src="images/img_17.jpg" alt="Cosmo World Ferris Wheel night lights">
+      <img src="images/img_18.jpg" alt="Cosmo World night view with Landmark Tower">
+    </div>
+    <div class="stop-head">
+      <div class="stop-time-row"><span class="stop-time">16:10</span></div>
+      <div class="stop-name">Yokohama Cosmo World</div>
+      <div class="badges">
+        <span class="badge bt">⏰ 16:10 – 17:30</span>
+        <span class="badge bc">💰 ชิงช้า ~900 เยน</span>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="desc">Cosmo Clock 21 สูง 112 เมตร เคยเป็นชิงช้าสวรรค์ใหญ่ที่สุดในโลก 1 รอบ ~17 นาที ไฟกลางคืนสวยมากเป็นพิเศษ</p>
+      <div class="tips">
+        <p>🔥 ขึ้นก่อนพระอาทิตย์ตก ประมาณ 16:30–17:00</p>
+        <p>✅ ได้ 2 วิว — แสงทองพลบค่ำ + ไฟกลางคืนเริ่มติด</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ EVENING ══ -->
+<div class="page">
+  <div class="section-hdr">
+    <div class="section-hdr-tag">🌅 ช่วงเย็น</div>
+    <div class="section-hdr-title">Golden Hour & Sunset</div>
+  </div>
+
+  <div class="walk">เดิน 10 นาที</div>
+
+  <!-- Stop 7: Landmark Tower -->
+  <div class="stop">
+    <img class="hero-img" src="images/img_19.jpg" alt="Yokohama Landmark Tower exterior">
+    <div class="gallery">
+      <img src="images/img_20.jpg" alt="Nippon Maru sailing ship near Landmark Tower">
+      <img src="images/img_19.jpg" alt="Landmark Tower and Landmark Plaza">
+    </div>
+    <div class="stop-head">
+      <div class="stop-time-row"><span class="stop-time">17:40</span></div>
+      <div class="stop-name">Landmark Tower — Sky Garden</div>
+      <div class="badges">
+        <span class="badge bt">⏰ 17:40 – 18:30</span>
+        <span class="badge bc">💰 ~1,000 เยน</span>
+        <span class="badge bw">🏢 ชั้น 69 · สูง 273 เมตร</span>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="desc">ตึกสูงที่สุดในโยโกฮาม่า ลิฟต์เร็วที่สุดในญี่ปุ่น ขึ้นชั้น 69 ใน 40 วินาที Sky Garden วิวพาโนรามา 360 องศา กลางคืนสวยมาก มองเห็นฟูจิซันวันที่อากาศดี</p>
+      <div class="tips">
+        <p>✅ ขึ้น Sky Garden ชม sunset → เปลี่ยนเป็น city lights</p>
+        <p>⚠️ เช็คเวลาเปิดก่อนไป — บางช่วงปิดปรับปรุง</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NIGHT ══ -->
+<div class="page">
+  <div class="night-hdr">
+    <h2>🌙 NIGHT PLAN</h2>
+    <p>18:30 – กลับโรงแรม · อาบน้ำ · <strong>เปลี่ยนชุด (สำคัญมาก!)</strong> · เติมพลัง</p>
+  </div>
+
+  <div class="night-label">19:45 · DINNER + WARM UP BAR — เลือก 1 อัน</div>
+
+  <div class="bar-pair">
+    <div class="bar-card">
+      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=700&q=85" alt="Bar 56s">
+      <div class="bar-label">
+        <h3>Bar 56's</h3>
+        <span>20:45 – 21:30 · วอร์มบาร์ เบาๆ ก่อน</span>
+      </div>
+    </div>
+    <div class="bar-card">
+      <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=700&q=85" alt="PUB SNUG">
+      <div class="bar-label">
+        <h3>PUB SNUG</h3>
+        <span>20:45 – 21:30 · บรรยากาศดี ไม่หนัก</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="night-label" style="color:#d07080;border-top-color:rgba(200,90,100,.25);">21:45 · MAIN EVENT 🎧</div>
+
+  <!-- Stop 8: Bar Luther -->
+  <div class="stop" style="background:#120c10;">
+    <div class="luther-wrap">
+      <img src="images/img_21.jpg" alt="Bar Luther Dance Groove interior">
+    </div>
+    <div class="gallery" style="background:#0c0808;">
+      <img src="images/img_22.jpg" alt="Bar Luther bar counter" style="filter:brightness(.8);">
+      <img src="images/img_21.jpg" alt="Bar Luther red atmosphere" style="filter:brightness(.8);">
+    </div>
+    <div class="luther-info">
+      <h3>Bar Luther Dance Groove</h3>
+      <div class="badges" style="margin-bottom:12px;">
+        <span class="badge bt">⏰ 21:45 – 00:30</span>
+        <span class="badge bc">💰 ~3,000 เยน</span>
+      </div>
+      <div class="tips" style="background:rgba(255,240,230,.08);border-left-color:#d09060;">
+        <p style="color:#e8d8c0;">✅ มีเพลง + dance floor · LGBTQ+ friendly</p>
+        <p style="color:#e8d8c0;">✅ Vibe สนุก ไม่ toxic</p>
+        <p style="color:#e8d8c0;">🚕 กลับโรงแรม Taxi ~10 นาที ~1,000 เยน</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BUDGET ══ -->
+<div class="page">
+  <img class="budget-hero" src="https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=1000&q=85" alt="Yokohama skyline">
+  <div class="gallery three">
+    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="Red Brick Warehouse">
+    <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="Chinatown">
+    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Cosmo World">
+  </div>
+  <div class="budget-title">
+    <h2>สรุปงบ<br><em>ทั้งวัน</em></h2>
+    <p>ประมาณการค่าใช้จ่าย · 1 คน · 1 วัน</p>
+  </div>
+  <div class="budget-body">
+    <div class="brow"><span class="bcat">🎡 เที่ยว</span><div class="bbar-w"><div class="bbar" style="width:44%"></div></div><span class="bamt">~2,000 ¥</span></div>
+    <div class="brow"><span class="bcat">🍜 กินอาหาร</span><div class="bbar-w"><div class="bbar" style="width:44%"></div></div><span class="bamt">~2,000 ¥</span></div>
+    <div class="brow"><span class="bcat">☕ คาเฟ่</span><div class="bbar-w"><div class="bbar" style="width:18%"></div></div><span class="bamt">~800 ¥</span></div>
+    <div class="brow"><span class="bcat">🌙 กลางคืน</span><div class="bbar-w"><div class="bbar" style="width:67%"></div></div><span class="bamt">~3,000 ¥</span></div>
+    <div class="brow"><span class="bcat">🚕 Taxi</span><div class="bbar-w"><div class="bbar" style="width:22%"></div></div><span class="bamt">~1,000 ¥</span></div>
+    <div class="btotal">
+      <span class="btotal-lbl">TOTAL / DAY</span>
+      <div>
+        <span class="btotal-amt">~8,000–9,000 ¥</span>
+        <span class="btotal-sub">(~2,000 บาท)</span>
+      </div>
+    </div>
+    <div class="insights">
+      <div class="icard"><span class="iemoji">🌅</span><div class="ititle">กลางวัน</div><p class="itext">Scenic + ชิล<br>วิวท่าเรือ<br>เดินเลียบอ่าว</p></div>
+      <div class="icard"><span class="iemoji">🌆</span><div class="ititle">กลางคืน</div><p class="itext">Fun + Social<br>Balance ดีมาก<br>ไม่หนักเกิน</p></div>
+      <div class="icard"><span class="iemoji">🎯</span><div class="ititle">จุดพีค</div><p class="itext">Cosmo (sunset)<br>Luther (คืน)<br>ห้ามพลาด!</p></div>
+    </div>
+  </div>
+  <div class="footer">YOKOHAMA MASTER PLAN · CONFIDENTIAL · 1 DAY FULL EXPERIENCE</div>
+</div>
+
+<script>
+// When any image fails to load, replace with a clean placeholder
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('img.hero-img, .gallery img, .bar-card img, .luther-wrap img, .budget-hero').forEach(function(img) {
+    if (!img.getAttribute('data-fallback-set')) {
+      img.setAttribute('data-fallback-set', '1');
+      img.addEventListener('error', function() {
+        var alt = this.alt || 'รูปภาพ';
+        var emoji = '📷';
+        if (alt.includes('Museum') || alt.includes('museum')) emoji = '🏛️';
+        else if (alt.includes('noodle') || alt.includes('ramen') || alt.includes('Ramen')) emoji = '🍜';
+        else if (alt.includes('Cabin') || alt.includes('ropeway')) emoji = '🚡';
+        else if (alt.includes('China') || alt.includes('food')) emoji = '🥟';
+        else if (alt.includes('Park') || alt.includes('park')) emoji = '🌊';
+        else if (alt.includes('Brick') || alt.includes('Warehouse')) emoji = '🧱';
+        else if (alt.includes('Cosmo') || alt.includes('ferris') || alt.includes('Ferris')) emoji = '🎡';
+        else if (alt.includes('Tower') || alt.includes('Landmark')) emoji = '🏙️';
+        else if (alt.includes('Bar') || alt.includes('Dance') || alt.includes('floor')) emoji = '🎶';
+        var w = this.width || this.offsetWidth || 300;
+        var h = this.height || this.offsetHeight || 200;
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'width:100%;background:#ede8dc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px 16px;min-height:120px;';
+        wrap.innerHTML = '<span style="font-size:48px;">' + emoji + '</span>' +
+          '<span style="font-size:11px;color:#6b5e4e;font-family:monospace;letter-spacing:1px;text-align:center;">' + alt + '</span>';
+        this.parentNode.replaceChild(wrap, this);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
 
