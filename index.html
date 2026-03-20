@@ -98,6 +98,17 @@ body{background:#ddd7cc;font-family:'Noto Sans Thai',sans-serif;-webkit-print-co
 .bar-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,4,4,.92) 0%,transparent 100%);padding:clamp(10px,3vw,16px) clamp(10px,3vw,14px) clamp(8px,2.5vw,12px);}
 .bar-label h3{font-family:'Playfair Display',serif;font-size:clamp(15px,4.5vw,20px);color:#f0e8e0;margin-bottom:3px;}
 .bar-label span{font-family:'Space Mono',monospace;font-size:clamp(8px,2.2vw,10px);color:#c09080;}
+.bar-map-btn{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(26,122,110,.85);color:#fff;
+  font-family:'Space Mono',monospace;
+  font-size:clamp(8px,2.2vw,10px);font-weight:700;
+  padding:4px 10px;border-radius:20px;
+  text-decoration:none;margin-top:6px;
+  letter-spacing:.3px;
+  animation:glowPulse 2s ease-in-out infinite;
+}
+@media print{.bar-map-btn{display:none !important;}}
 
 /* luther */
 .luther-wrap{position:relative;}
@@ -622,7 +633,7 @@ img[alt]:after{
         <span class="stop-time">09:30</span>
       </div>
       <div class="stop-name">Cup Noodles Museum Yokohama</div>
-      <a class="map-btn" href="https://maps.app.goo.gl/QxRkHHmjPnVmHdAu5" target="_blank" rel="noopener">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Cup+Noodles+Museum+Yokohama" target="_blank" rel="noopener">
         📍 เปิด Google Maps
       </a>
       <div class="badges">
@@ -655,7 +666,7 @@ img[alt]:after{
         <span class="stop-time">11:10</span>
       </div>
       <div class="stop-name">Yokohama Air Cabin</div>
-      <a class="map-btn" href="https://maps.app.goo.gl/vz8T4DxcPQimqZcz8" target="_blank" rel="noopener">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Yokohama+Air+Cabin" target="_blank" rel="noopener">
         📍 เปิด Google Maps
       </a>
       <div class="badges">
@@ -689,7 +700,7 @@ img[alt]:after{
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">12:00</span></div>
       <div class="stop-name">Yokohama Chinatown</div>
-      <a class="map-btn" href="https://maps.app.goo.gl/oGYhg1oFfBHwkytp8" target="_blank" rel="noopener">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Yokohama+Chinatown+中華街" target="_blank" rel="noopener">
         📍 เปิด Google Maps
       </a>
       <div class="badges">
@@ -718,7 +729,7 @@ img[alt]:after{
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">13:40</span></div>
       <div class="stop-name">Yamashita Park</div>
-      <a class="map-btn" href="https://maps.app.goo.gl/UHnBrM7kh5yy7QFHA" target="_blank" rel="noopener">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Yamashita+Park+Yokohama" target="_blank" rel="noopener">
         📍 เปิด Google Maps
       </a>
       <div class="badges">
@@ -752,7 +763,7 @@ img[alt]:after{
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">14:50</span></div>
       <div class="stop-name">Yokohama Red Brick Warehouse</div>
-      <a class="map-btn" href="https://maps.app.goo.gl/Z5E3o5CgFTpE9WDQA" target="_blank" rel="noopener">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Yokohama+Red+Brick+Warehouse" target="_blank" rel="noopener">
         📍 เปิด Google Maps
       </a>
       <div class="badges">
@@ -781,7 +792,7 @@ img[alt]:after{
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">16:10</span></div>
       <div class="stop-name">Yokohama Cosmo World</div>
-      <a class="map-btn" href="https://maps.app.goo.gl/XvimNT7Vc2ekXuYV9" target="_blank" rel="noopener">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Yokohama+Cosmo+World" target="_blank" rel="noopener">
         📍 เปิด Google Maps
       </a>
       <div class="badges">
@@ -817,7 +828,7 @@ img[alt]:after{
     <div class="stop-head">
       <div class="stop-time-row"><span class="stop-time">17:40</span></div>
       <div class="stop-name">Landmark Tower — Sky Garden</div>
-      <a class="map-btn" href="https://maps.app.goo.gl/C5VBpNbJqBQvaMBM6" target="_blank" rel="noopener">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Yokohama+Landmark+Tower+Sky+Garden" target="_blank" rel="noopener">
         📍 เปิด Google Maps
       </a>
       <div class="badges">
@@ -851,6 +862,7 @@ img[alt]:after{
       <div class="bar-label">
         <h3>Bar 56's</h3>
         <span>20:45 – 21:30 · วอร์มบาร์ เบาๆ ก่อน</span>
+        <a class="bar-map-btn" href="https://www.google.com/maps/search/?api=1&query=Bar+56s+Yokohama" target="_blank" rel="noopener">📍 Maps</a>
       </div>
     </div>
     <div class="bar-card">
@@ -858,6 +870,7 @@ img[alt]:after{
       <div class="bar-label">
         <h3>PUB SNUG</h3>
         <span>20:45 – 21:30 · บรรยากาศดี ไม่หนัก</span>
+        <a class="bar-map-btn" href="https://www.google.com/maps/search/?api=1&query=Pub+Snug+Yokohama" target="_blank" rel="noopener">📍 Maps</a>
       </div>
     </div>
   </div>
@@ -875,7 +888,7 @@ img[alt]:after{
     </div>
     <div class="luther-info">
       <h3>Bar Luther Dance Groove</h3>
-      <a class="map-btn" href="https://maps.app.goo.gl/fBBSBjQGRQBJJyxC9" target="_blank" rel="noopener" style="margin-bottom:10px;">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Bar+Luther+Yokohama" target="_blank" rel="noopener" style="margin-bottom:10px;">
         📍 เปิด Google Maps
       </a>
       <div class="badges" style="margin-bottom:12px;">
